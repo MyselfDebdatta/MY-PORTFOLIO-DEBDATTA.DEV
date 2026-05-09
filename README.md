@@ -2,12 +2,27 @@
 
 # 🚀 Debdatta Panda - Interactive Portfolio
 
-**A highly interactive, cinematic, and fully responsive personal portfolio built with React, TypeScript, Vite, and Framer Motion.**
+**A highly interactive, cinematic, and fully responsive personal portfolio.**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMyselfDebdatta%2FMY-PORTFOLIO-DEBDATTA.DEV)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
+</p>
 
-[Live Demo](https://debdatta-panda.vercel.app/) · [Report Bug](https://github.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/issues) · [Request Feature](https://github.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/issues)
+<p align="center">
+  <a href="https://debdatta-panda.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" /></a>
+  <a href="https://github.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV"><img src="https://img.shields.io/badge/Deploy_with_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy with Vercel" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" /></a>
+</p>
+
+<p align="center">
+  <a href="https://debdatta-panda.vercel.app/"><b>Live Demo</b></a> · 
+  <a href="https://github.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/issues"><b>Report Bug</b></a> · 
+  <a href="https://github.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/issues"><b>Request Feature</b></a>
+</p>
 
 </div>
 
