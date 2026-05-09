@@ -75,8 +75,8 @@ const ConnectSection = () => {
     try {
       // 1. Send the main email to you (Contact Us Template)
       await emailjs.send(
-        'MyselfDeb11022006',
-        'template_k4cl7fg',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT,
         {
           name: formData.name,
           email: formData.email,
@@ -85,19 +85,19 @@ const ConnectSection = () => {
           message: formData.message,
           reply_to: formData.email,
         },
-        'aD9hZFZL9rMNvgV1f'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       // 2. Send the auto-reply email to the user
       await emailjs.send(
-        'MyselfDeb11022006',
-        'template_74l350w',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY,
         {
           name: formData.name,
           email: formData.email,
           reply_to: 'myselfdeb11@gmail.com',
         },
-        'aD9hZFZL9rMNvgV1f'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       
       setSubmitting(false);
