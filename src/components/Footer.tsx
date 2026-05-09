@@ -39,7 +39,7 @@ const Footer = () => {
           transition={{ duration: 1 }}
           className="font-display font-black text-center leading-[0.85] whitespace-nowrap"
           style={{
-            fontSize: 'clamp(5rem, 25vw, 19rem)',
+            fontSize: 'clamp(3rem, 12vw, 19rem)',
             background:
               'linear-gradient(180deg, hsl(var(--foreground) / 0.14) 0%, hsl(var(--primary) / 0.10) 100%)',
             WebkitBackgroundClip: 'text',

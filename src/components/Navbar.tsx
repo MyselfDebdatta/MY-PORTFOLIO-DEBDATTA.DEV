@@ -434,21 +434,34 @@ const Navbar = () => {
                   {item.label}
                 </a>
               ))}
-              <div className="flex items-center gap-3 pt-3 border-t border-border/50">
+              <div className="flex flex-col gap-4 pt-4 border-t border-border/50">
                 <button
-                  onClick={() => setMusicOn((m) => !m)}
-                  className="flex items-center gap-2 text-sm text-muted-foreground"
+                  onClick={() => {
+                    setIsOpen(false);
+                    window.dispatchEvent(new Event('replay-intro'));
+                    toast('Replaying intro', { description: 'Boot sequence restarting...' });
+                  }}
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider"
                 >
-                  {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
-                  {isPlaying ? 'Music On' : 'Music Off'}
+                  <RotateCcw size={14} />
+                  Replay Intro
                 </button>
-                <button
-                  onClick={() => setIsDark(!isDark)}
-                  className="ml-auto flex items-center gap-2 text-sm text-muted-foreground"
-                >
-                  {isDark ? <Sun size={14} /> : <Moon size={14} />}
-                  {isDark ? 'Light' : 'Dark'}
-                </button>
+                <div className="flex items-center justify-between w-full">
+                  <button
+                    onClick={() => setMusicOn((m) => !m)}
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider"
+                  >
+                    {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
+                    {isPlaying ? 'Music On' : 'Music Off'}
+                  </button>
+                  <button
+                    onClick={() => setIsDark(!isDark)}
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider"
+                  >
+                    {isDark ? <Sun size={14} /> : <Moon size={14} />}
+                    {isDark ? 'Light' : 'Dark'}
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>

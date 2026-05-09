@@ -172,7 +172,7 @@ const IntroScene = ({ onComplete }: IntroSceneProps) => {
             </div>
 
             {/* Terminal body */}
-            <div className="p-5 font-mono text-xs md:text-sm h-[280px] md:h-[320px] overflow-hidden relative">
+            <div className="p-4 sm:p-5 font-mono text-[11px] sm:text-xs md:text-sm h-auto min-h-[290px] md:min-h-[320px] overflow-hidden relative pb-8">
               {bootLines.slice(0, lineIdx).map((line, i) => (
                 <div key={i} className={`${colorFor(line.t)} leading-relaxed tracking-wide`}>
                   {line.text}
