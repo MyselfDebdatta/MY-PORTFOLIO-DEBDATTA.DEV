@@ -1,0 +1,535 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 180 100% 95%;
+
+    --card: 220 25% 8%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 180 100% 95%;
+
+    --primary: 174 100% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 180 60% 80%;
+
+    --muted: 220 20% 14%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 280 100% 65%;
+    --accent-foreground: 180 100% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 14%;
+    --ring: 174 100% 50%;
+
+    --radius: 0.75rem;
+
+    --neon-glow: 174 100% 50%;
+    --neon-purple: 280 100% 65%;
+    --neon-pink: 330 100% 60%;
+    --surface-glass: 220 25% 10%;
+
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 180 60% 80%;
+    --sidebar-primary: 174 100% 50%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 25% 12%;
+    --sidebar-accent-foreground: 180 60% 80%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 174 100% 50%;
+
+    --font-display: 'Orbitron', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .light {
+    /* Sunset Aurora light palette */
+    --background: 30 20% 98%;
+    --foreground: 220 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 50% 10%;
+
+    /* Vivid Coral/Orange Primary */
+    --primary: 12 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 15% 95%;
+    --secondary-foreground: 220 50% 15%;
+
+    --muted: 30 15% 92%;
+    --muted-foreground: 220 20% 35%;
+
+    /* Hot Pink Accent */
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 85%;
+    --input: 30 15% 90%;
+    --ring: 12 90% 60%;
+
+    --neon-glow: 12 90% 60%;
+    --neon-purple: 270 85% 60%;
+    --neon-pink: 330 85% 60%;
+    --surface-glass: 0 0% 100%;
+
+    --sidebar-background: 30 20% 96%;
+    --sidebar-foreground: 220 40% 15%;
+    --sidebar-primary: 12 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 15% 92%;
+    --sidebar-accent-foreground: 220 40% 15%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 12 90% 60%;
+  }
+
+  .light body {
+    background: hsl(30 20% 98%);
+  }
+
+  /* --- Global Light Mode Hard Overrides --- */
+  .light * {
+    backdrop-filter: none !important;
+  }
+
+  /* Remove all inline glows and text shadows */
+  .light [style*="box-shadow"] {
+    box-shadow: none !important;
+  }
+  .light [style*="text-shadow"] {
+    text-shadow: none !important;
+  }
+  .light .animate-pulse-glow {
+    animation: none !important;
+    background-color: transparent !important;
+  }
+
+  /* Solidify transparent backgrounds like Nav Bar */
+  .light .bg-background\/40,
+  .light .bg-background\/50,
+  .light .bg-background\/60,
+  .light .bg-background\/70 {
+    background-color: hsl(0 0% 100%) !important;
+    border-color: hsl(30 15% 90%) !important;
+    box-shadow: 0 4px 10px -2px hsl(0 0% 0% / 0.05) !important;
+  }
+
+  /* Solidify primary transparent buttons (Github, Let's Collaborate) */
+  .light .bg-primary\/5,
+  .light .bg-primary\/10,
+  .light .bg-primary\/15,
+  .light .bg-primary\/20 {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(0 0% 100%) !important;
+    border-color: hsl(var(--primary)) !important;
+    box-shadow: 0 2px 4px hsl(var(--primary) / 0.2) !important;
+  }
+  
+  /* Ensure primary text becomes white when placed on solid primary backgrounds */
+  .light .bg-primary\/5 .text-primary,
+  .light .bg-primary\/10 .text-primary,
+  .light .bg-primary\/15 .text-primary,
+  .light .bg-primary\/20 .text-primary,
+  .light .neon-button .text-primary,
+  .light a:has([style*="linear-gradient"]) .text-primary {
+    color: hsl(0 0% 100%) !important;
+  }
+
+  /* Solidify specific inline gradients like Let's Collaborate card */
+  .light [style*="linear-gradient(135deg, hsl(var(--background)"] {
+    background: hsl(0 0% 100%) !important;
+    border-color: hsl(30 15% 85%) !important;
+    box-shadow: 0 4px 15px hsl(0 0% 0% / 0.05) !important;
+  }
+
+  /* Solidify Active Nav Pill */
+  .light [style*="linear-gradient(135deg, hsl(var(--primary)"] {
+    background: hsl(var(--primary)) !important;
+    box-shadow: 0 2px 6px hsl(var(--primary) / 0.3) !important;
+    border: none !important;
+  }
+
+  /* Glass panel (placed last to override box-shadow removal) */
+  .light .glass-panel {
+    background: hsl(0 0% 100%) !important;
+    border-color: hsl(30 15% 90%) !important;
+    box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.05), 0 10px 15px -3px hsl(0 0% 0% / 0.05) !important;
+  }
+
+  .light .neon-border {
+    border-color: hsl(30 15% 85%) !important;
+    box-shadow: 0 4px 12px -2px hsl(0 0% 0% / 0.05) !important;
+  }
+
+  .light .neon-text {
+    color: hsl(12 90% 60%);
+    text-shadow: none;
+  }
+
+  .light .neon-button {
+    background: hsl(12 90% 60%);
+    border-color: hsl(12 90% 60%);
+    color: hsl(0 0% 100%);
+    font-weight: 600;
+    box-shadow: 0 2px 4px hsl(12 90% 60% / 0.2);
+  }
+
+  .light .neon-button:hover {
+    background: hsl(12 90% 50%);
+    box-shadow: 0 4px 8px hsl(12 90% 60% / 0.3);
+    transform: translateY(-1px);
+  }
+
+  .light .gradient-text,
+  .light .animated-gradient-text {
+    background-image: linear-gradient(135deg, hsl(12 90% 55%), hsl(330 85% 55%), hsl(270 85% 60%));
+  }
+
+  .light ::-webkit-scrollbar-track {
+    background: hsl(30 20% 95%);
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-heading);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: 
+      0 0 20px hsl(var(--neon-glow) / 0.05),
+      inset 0 1px 0 hsl(var(--foreground) / 0.05);
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 
+      0 0 10px hsl(var(--primary) / 0.5),
+      0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .neon-border {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 
+      0 0 15px hsl(var(--primary) / 0.1),
+      inset 0 0 15px hsl(var(--primary) / 0.05);
+  }
+
+  /* 3D Carousel */
+  .carousel-3d-container {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+    cursor: grab;
+  }
+
+  .carousel-3d-container:active {
+    cursor: grabbing;
+  }
+
+  .carousel-3d {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .memory-card-3d {
+    position: absolute;
+    width: 320px;
+    height: 380px;
+    left: 50%;
+    top: 50%;
+    margin-left: -160px;
+    margin-top: -190px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .card-inner-3d {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .memory-card-3d:hover .card-inner-3d {
+    transform: translateZ(8px);
+  }
+
+  .memory-card-3d.flipped .card-inner-3d {
+    transform: rotateY(180deg);
+  }
+
+  .card-face-front,
+  .card-face-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px hsl(var(--background) / 0.5);
+  }
+
+  .card-face-front {
+    background: linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.9));
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  .card-face-back {
+    background: linear-gradient(135deg, hsl(var(--card) / 0.9), hsl(var(--card) / 0.8));
+    border: 1px solid hsl(var(--primary) / 0.3);
+    transform: rotateY(180deg);
+  }
+
+  /* Electric border effect */
+  .electric-card .card-face-front,
+  .electric-card .card-face-back {
+    border: 1.5px solid hsl(var(--primary) / 0.5);
+    box-shadow:
+      0 0 8px hsl(var(--primary) / 0.15),
+      0 0 25px hsl(var(--primary) / 0.08),
+      inset 0 0 15px hsl(var(--primary) / 0.04);
+  }
+
+  .electric-card:hover .card-face-front,
+  .electric-card:hover .card-face-back {
+    border-color: hsl(var(--primary) / 0.7);
+    box-shadow:
+      0 0 12px hsl(var(--primary) / 0.25),
+      0 0 40px hsl(var(--primary) / 0.12),
+      inset 0 0 20px hsl(var(--primary) / 0.06);
+  }
+
+  .electric-card .card-face-front::before,
+  .electric-card .card-face-back::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    background: linear-gradient(
+      var(--electric-angle, 0deg),
+      transparent 30%,
+      hsl(var(--primary) / 0.6) 50%,
+      transparent 70%
+    );
+    z-index: -1;
+    animation: electric-rotate 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .electric-card:hover .card-face-front::before,
+  .electric-card:hover .card-face-back::before {
+    opacity: 1;
+  }
+
+  @keyframes electric-rotate {
+    0% { --electric-angle: 0deg; }
+    100% { --electric-angle: 360deg; }
+  }
+
+  @property --electric-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .card-glow-3d {
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .memory-card-3d:hover .card-glow-3d {
+    opacity: 1;
+  }
+
+  .glitch-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 65%, hsl(var(--primary) / 0.2) 70%, transparent 75%);
+    background-size: 200% 200%;
+    animation: glitch-sweep 3s linear infinite;
+  }
+
+  @keyframes glitch-sweep {
+    0% { background-position: 0 0; }
+    25% { background-position: 100% 0; }
+    50% { background-position: 100% 100; }
+    75% { background-position: 0 100%; }
+    100% { background-position: 0 0; }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-3d-container {
+      height: 460px;
+    }
+    .carousel-3d {
+      width: 280px;
+      height: 360px;
+    }
+    .memory-card-3d {
+      width: 260px;
+      height: 340px;
+      margin-left: -130px;
+      margin-top: -170px;
+    }
+  }
+
+  .neon-button {
+    @apply relative px-6 py-2 rounded-full border font-medium text-sm uppercase tracking-widest;
+    border-color: hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .neon-button:hover {
+    background: hsl(var(--primary) / 0.15);
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.3);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--neon-purple)));
+  }
+
+  .animated-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      110deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--neon-purple)) 25%,
+      hsl(var(--neon-pink)) 50%,
+      hsl(var(--neon-purple)) 75%,
+      hsl(var(--primary)) 100%
+    );
+    background-size: 250% auto;
+    animation: gradient-shift 6s linear infinite;
+  }
+
+  .scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--primary) / 0.03) 2px,
+      hsl(var(--primary) / 0.03) 4px
+    );
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  100% { background-position: 250% center; }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+  background-color: hsl(var(--background));
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overscroll-behavior: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
