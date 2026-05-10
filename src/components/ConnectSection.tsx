@@ -474,7 +474,7 @@ const ConnectSection = () => {
               </div>
             </div>
             <a
-              href="https://calendly.com/pandadebdatta9/30min"
+              href="https://calendly.com/myselfdeb11/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[10px] font-mono uppercase tracking-widest text-primary border border-primary/40 rounded-full px-3 py-1 hover:bg-primary/10 transition-colors"
@@ -483,7 +483,7 @@ const ConnectSection = () => {
             </a>
           </div>
           <iframe
-            src="https://calendly.com/pandadebdatta9/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=0&background_color=0b1418&text_color=e6fffb&primary_color=14e0c2"
+            src="https://calendly.com/myselfdeb11/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=0&background_color=0b1418&text_color=e6fffb&primary_color=14e0c2"
             title="Schedule a call with Debdatta"
             className="w-full bg-background"
             style={{ height: 760, border: 0 }}
