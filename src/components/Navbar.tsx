@@ -428,7 +428,17 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    const targetId = item.href.replace('#', '');
+                    const element = document.getElementById(targetId);
+                    if (element) {
+                      setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }, 50);
+                    }
+                  }}
                   className="text-sm font-heading text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider flex items-center gap-2"
                 >
                   <item.Icon size={14} />
