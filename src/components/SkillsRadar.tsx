@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
@@ -13,6 +14,15 @@ const data = [
 ];
 
 const SkillsRadar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -33,7 +43,7 @@ const SkillsRadar = () => {
         </div>
         <div className="h-[320px] w-full">
           <ResponsiveContainer>
-            <RadarChart data={data} outerRadius="78%">
+            <RadarChart data={data} outerRadius={isMobile ? "55%" : "72%"}>
               <PolarGrid stroke="hsl(var(--border))" />
               <PolarAngleAxis
                 dataKey="domain"
