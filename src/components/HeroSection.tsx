@@ -97,7 +97,7 @@ const HeroSection = () => {
   });
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-center md:items-start lg:items-center overflow-x-hidden">
+    <section id="home" className="relative lg:min-h-[100dvh] flex items-center overflow-x-hidden">
       <div className="container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center pt-32 md:pt-40 lg:pt-24 pb-24 sm:pb-20">
         {/* Left content */}
         <div className="space-y-8 z-10">
