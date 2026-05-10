@@ -495,10 +495,10 @@ const ProjectsSection = () => {
                             <h3 className="text-lg font-display font-bold text-foreground mb-2">
                               {card.title}
                             </h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 font-heading">
+                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 font-heading overflow-y-auto pr-1">
                               {card.backDescription}
                             </p>
-                            <div className="flex gap-2 mt-4">
+                            <div className="flex gap-2 mt-4 shrink-0">
                               {card.liveUrl && (
                                 <a
                                   href={card.liveUrl}

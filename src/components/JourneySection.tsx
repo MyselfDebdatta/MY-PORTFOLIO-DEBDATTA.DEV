@@ -173,14 +173,14 @@ const GalleryScreen = ({ images, label }: { images: string[]; label: string }) =
       <button
         onClick={goPrev}
         aria-label="Previous photo"
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-background/60 backdrop-blur border border-primary/40 hover:bg-primary/20 hover:border-primary text-primary flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-background/60 backdrop-blur border border-primary/40 hover:bg-primary/20 hover:border-primary text-primary flex items-center justify-center transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronLeft size={18} />
       </button>
       <button
         onClick={goNext}
         aria-label="Next photo"
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-background/60 backdrop-blur border border-primary/40 hover:bg-primary/20 hover:border-primary text-primary flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-background/60 backdrop-blur border border-primary/40 hover:bg-primary/20 hover:border-primary text-primary flex items-center justify-center transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
       >
         <ChevronRight size={18} />
       </button>
