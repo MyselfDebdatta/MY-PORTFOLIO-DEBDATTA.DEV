@@ -82,12 +82,12 @@ const memoryCards: MemoryCard[] = [
     image: portfolioImg,
     backDescription:
       'My personal portfolio — a cinematic, cyber-neon experience featuring a terminal boot intro, 3D project carousel, animated journey timeline, glittering particle background, and live typewriter roles. Built end-to-end as a showcase of design, engineering, and storytelling.',
-    liveUrl: 'https://debdatta.dev',
+    liveUrl: 'https://debdatta-panda.vercel.app/',
     projectDetail: {
       id: 2,
       name: 'debdatta.dev — Portfolio',
       tagline: 'A cinematic cyber-neon portfolio engineered as a product, not a template.',
-      liveUrl: 'https://debdatta.dev',
+      liveUrl: 'https://debdatta-panda.vercel.app/',
       keyDetails: [
         { label: 'Type', value: 'Personal Portfolio' },
         { label: 'Stack', value: 'React + Vite + TS' },
@@ -198,7 +198,12 @@ const memoryCards: MemoryCard[] = [
         impact:
           'Turns scientific telemetry into a live, human-friendly radar — earlier detection, faster decisions and a much more intuitive way to understand asteroid trajectories.',
       },
-      team: [{ name: 'Debdatta Panda', role: 'Full-Stack Developer' }],
+      team: [
+        { name: 'Debdatta Panda', role: 'Full-Stack Developer' },
+        { name: 'Soumyashri Mohapatra', role: 'Full-Stack Developer' },
+        { name: 'Deepesh Singh', role: 'Full-Stack Developer' },
+        { name: 'Ayush Animesh Barik', role: 'Full-Stack Developer' },
+      ],
       achievements: [
         'Live NASA NeoWs data ingestion pipeline',
         'Physics-based asteroid risk scoring engine',
@@ -215,11 +220,13 @@ const memoryCards: MemoryCard[] = [
     preview: 'Offline BLE-powered inventory verification on an ESP32 hotspot.',
     image: autobleImg,
     backDescription:
-      'AutoBLE is a portable, fully offline inventory system that pairs ESP32 with BLE beacons. Tagged containers are detected via RSSI proximity and auto-verified on a real-time React dashboard served directly from the ESP32 hotspot — no internet required.',
+      'AutoBLE is a portable, fully offline inventory system that pairs ESP32 with BLE beacons. Tagged containers are detected via RSSI proximity and auto-verified on a real-time React dashboard served directly from the ESP32 hotspot. Note: As it\'s a hardware-based project, the website is not functional without the hardware model, but it is provided for a better understanding of the project.',
+    liveUrl: 'https://MyselfDebdatta.github.io/AutoBLE_SMART-INVENTORY_VERIFIED-BY-PROXIMITY/',
     projectDetail: {
       id: 5,
       name: 'AutoBLE — Smart Inventory Verified by Proximity',
       tagline: 'A fully offline, BLE-powered inventory verifier hosted from an ESP32.',
+      liveUrl: 'https://MyselfDebdatta.github.io/AutoBLE_SMART-INVENTORY_VERIFIED-BY-PROXIMITY/',
       keyDetails: [
         { label: 'Type', value: 'IoT + Embedded' },
         { label: 'Hardware', value: 'ESP32 + BLE Tags' },
@@ -238,9 +245,9 @@ const memoryCards: MemoryCard[] = [
         engineering:
           'ESP32 firmware scans BLE advertisements and reads RSSI for proximity inference, while hosting a Wi-Fi access point and lightweight HTTP/WebSocket server. The React + Vite dashboard is bundled and served directly from the ESP32, with custom SVG visuals for tag status.',
         impact:
-          'A pocket-sized, internet-free inventory verifier — ideal for site audits, remote storage and any environment where connectivity isn\'t guaranteed.',
+          'A pocket-sized, internet-free inventory verifier — ideal for site audits, remote storage and any environment where connectivity isn\'t guaranteed. Note: As it\'s a hardware-based project, the website is not functional without the hardware model, but it is provided for a better understanding of the project.',
       },
-      team: [{ name: 'Debdatta Panda', role: 'Hardware + Full-Stack Developer' }],
+      team: [{ name: 'Debdatta Panda', role: 'Full-Stack Developer' }],
       achievements: [
         'Self-hosted React dashboard on ESP32 hotspot',
         'BLE proximity verification using RSSI',
@@ -282,7 +289,12 @@ const memoryCards: MemoryCard[] = [
         impact:
           'When live, the platform aims to give millions of MSME owners a trusted, free assistant that turns compliance from a blocker into a guided workflow.',
       },
-      team: [{ name: 'Debdatta Panda', role: 'Founder & Lead Developer' }],
+      team: [
+        { name: 'Debdatta Panda', role: 'Project Idea Planner & Full-Stack Developer' },
+        { name: 'Rounak Singh', role: 'Main Developer & Full-Stack Developer' },
+        { name: 'Soumyashri Mohapatra', role: 'Full-Stack Developer' },
+        { name: 'Saket Kumar Seth', role: 'Full-Stack Developer' },
+      ],
       achievements: [
         'Currently in active development',
         'Conversational, source-cited compliance guidance',
