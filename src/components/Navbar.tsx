@@ -193,14 +193,14 @@ const Navbar = () => {
       <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {ariaStatus}
       </div>
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#home" className="font-display text-base md:text-lg font-bold neon-text tracking-wider">
+      <div className="container mx-auto px-2 sm:px-6 py-4 flex items-center justify-between">
+        <a href="#home" className="font-display text-sm md:text-base lg:text-lg font-bold neon-text tracking-wider shrink-0 mr-2">
           {'<debdatta.dev/>'}
         </a>
 
         {/* Center nav — interactive pill bar */}
         <div
-          className="hidden md:flex relative items-center gap-1 px-2 py-1.5 rounded-full border border-border/60 bg-background/50 backdrop-blur-md"
+          className="hidden md:flex relative items-center gap-0 lg:gap-1 px-1 lg:px-2 py-1 lg:py-1.5 rounded-full border border-border/60 bg-background/50 backdrop-blur-md shrink-1"
           style={{ boxShadow: '0 0 24px hsl(var(--primary) / 0.08), inset 0 1px 0 hsl(var(--foreground) / 0.05)' }}
           onMouseLeave={() => setHoverDebounced(null)}
         >
@@ -223,7 +223,7 @@ const Navbar = () => {
                     setRipples((prev) => ({ ...prev, [idx]: (prev[idx] ?? []).filter((x) => x.id !== r.id) }));
                   }, 650);
                 }}
-                className="relative px-4 py-1.5 rounded-full text-xs font-heading uppercase tracking-wider transition-colors overflow-hidden"
+                className="relative px-2 lg:px-4 py-1.5 rounded-full text-[10px] lg:text-xs font-heading uppercase tracking-wider transition-colors overflow-hidden whitespace-nowrap shrink-1"
               >
                 {/* Click ripples */}
                 {itemRipples.map((r) => (
@@ -298,7 +298,7 @@ const Navbar = () => {
           })}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-1 lg:gap-3 shrink-0 ml-2">
           {/* Music control */}
           <div
             className="relative flex items-center gap-2 px-2 py-1.5 rounded-full border border-border/60 bg-background/40"
