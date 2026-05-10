@@ -181,10 +181,11 @@ const Navbar = () => {
     : 'Ambient music live';
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled ? 'glass-panel !rounded-none border-b border-border/50' : 'bg-transparent'
       }`}
@@ -446,28 +447,39 @@ const Navbar = () => {
                   <RotateCcw size={14} />
                   Replay Intro
                 </button>
-                <div className="flex items-center justify-between w-full">
-                  <button
-                    onClick={() => setMusicOn((m) => !m)}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider"
-                  >
-                    {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
-                    {isPlaying ? 'Music On' : 'Music Off'}
-                  </button>
-                  <button
-                    onClick={() => setIsDark(!isDark)}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors uppercase tracking-wider"
-                  >
-                    {isDark ? <Sun size={14} /> : <Moon size={14} />}
-                    {isDark ? 'Light' : 'Dark'}
-                  </button>
-                </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.nav>
+
+      {/* Floating Mobile Controls */}
+      <div className="md:hidden fixed bottom-6 right-5 z-50 flex flex-col gap-3">
+        <button
+          onClick={() => {
+            setMusicOn((m) => {
+              const next = !m;
+              toast(next ? '🎵 Lofi ambient music on' : '🔇 Music muted', {
+                description: next ? 'Enjoy the vibe while you explore.' : 'Tap the speaker again to bring it back.',
+              });
+              return next;
+            });
+          }}
+          className="w-12 h-12 rounded-full glass-panel flex items-center justify-center shadow-lg border border-primary/20 hover:neon-border transition-all active:scale-95 bg-background/80 backdrop-blur-md"
+          aria-label={musicOn ? 'Mute ambient music' : 'Play ambient music'}
+        >
+          {isPlaying ? <Volume2 size={20} className="text-primary" /> : <VolumeX size={20} className="text-muted-foreground" />}
+        </button>
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className="w-12 h-12 rounded-full glass-panel flex items-center justify-center shadow-lg border border-primary/20 hover:neon-border transition-all active:scale-95 bg-background/80 backdrop-blur-md"
+          aria-label="Toggle theme"
+        >
+          {isDark ? <Sun size={20} className="text-primary" /> : <Moon size={20} className="text-primary" />}
+        </button>
+      </div>
+    </>
   );
 };
 

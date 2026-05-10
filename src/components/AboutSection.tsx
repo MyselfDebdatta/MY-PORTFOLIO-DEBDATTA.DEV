@@ -19,8 +19,8 @@ const terminalLines = [
 ];
 
 const stats = [
-  { icon: Coffee, value: '3+', label: 'Years Coding' },
-  { icon: Rocket, value: '20+', label: 'Projects Built' },
+  { icon: Coffee, value: '2+', label: 'Years Coding' },
+  { icon: Rocket, value: '8+', label: 'Projects Built' },
   { icon: Zap, value: '10+', label: 'Tech Mastered' },
 ];
 

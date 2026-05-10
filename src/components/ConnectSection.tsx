@@ -95,6 +95,7 @@ const ConnectSection = () => {
         {
           name: formData.name,
           email: formData.email,
+          message: formData.message,
           reply_to: 'myselfdeb11@gmail.com',
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY

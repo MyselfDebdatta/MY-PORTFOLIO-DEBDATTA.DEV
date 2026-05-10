@@ -79,8 +79,8 @@ const AnimatedBackground = () => {
     const isLowEnd = cores <= 4 || memory <= 4 || window.innerWidth < 768;
     const tier = isLowEnd ? 0.6 : 1;
 
-    // Clean, minimalist pool — fewer particles, elegant motion
-    const baseSparkleCount = Math.floor(Math.min(100, (width * height) / 15000) * tier);
+    // Clean, minimalist pool — slightly increased for more sparkle
+    const baseSparkleCount = Math.floor(Math.min(150, (width * height) / 10000) * tier);
     const sparkles = Array.from({ length: baseSparkleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -94,7 +94,7 @@ const AnimatedBackground = () => {
       hue: Math.random() < 0.5 ? 'primary' : Math.random() < 0.75 ? 'accent' : 'pink',
     }));
 
-    const baseFireflyCount = Math.floor(Math.min(15, (width * height) / 80000) * tier);
+    const baseFireflyCount = Math.floor(Math.min(25, (width * height) / 50000) * tier);
     const fireflies = Array.from({ length: baseFireflyCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
