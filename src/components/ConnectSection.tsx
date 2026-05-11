@@ -100,6 +100,25 @@ const ConnectSection = () => {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
+
+      // 3. Save to Google Sheets
+      const sheetData = new FormData();
+      sheetData.append('Name', formData.name);
+      sheetData.append('Email', formData.email);
+      sheetData.append('LinkedIn', formData.linkedin || 'Not provided');
+      sheetData.append('GitHub', formData.github || 'Not provided');
+      sheetData.append('Message', formData.message);
+
+      try {
+        await fetch(import.meta.env.VITE_GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          body: sheetData,
+          mode: 'no-cors' // Required for Google Apps Script to not block the request
+        });
+      } catch (sheetError) {
+        console.error('Google Sheets error:', sheetError);
+        // We don't want to show an error to the user if ONLY the sheet fails but emails sent
+      }
       
       setSubmitting(false);
       setConfirmed(true);
