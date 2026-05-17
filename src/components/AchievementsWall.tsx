@@ -10,10 +10,13 @@ type Cert = {
   date: string;
   tag: string;
   file?: string;
+  link?: string;
 };
 
-// 22 real certificates — all visible, no individual click required.
+// 24 real certificates — all visible, no individual click required.
 const certificates: Cert[] = [
+  { title: 'HackerRank Orchestrate AI Agent - 175th Place', issuer: 'HackerRank', date: 'May 2026', tag: 'AI/ML', file: 'HACKERRANK_ORCHESTRATE_AI_AGENT_2026.png' },
+  { title: 'Open Source Contributor - Season 5', issuer: 'Social Summer of Code', date: '2026', tag: 'Open Source', file: 'SSOC_SEASON_5_CONTRIBUTOR.png' },
   { title: 'Getting Started with Artificial Intelligence', issuer: 'IBM SkillsBuild', date: 'Mar 2026', tag: 'AI/ML', file: 'IBM_AI_BOOTCAMP.pdf' },
   { title: 'XIM Synchronize 4.0 Hackathon', issuer: 'XIM University · Bhubaneswar', date: 'Feb 2026', tag: 'Hackathon', file: 'XIM_SYNCHRONIZE_HACKATHON_2026_FEBRUARY.pdf' },
   { title: "Pravah '26", issuer: 'IIT Bhubaneswar', date: 'Feb 2026', tag: 'Tech Fest', file: "IIT BHUVNESHWAR_PRAVAH'26_FEBRUARY.png" },
@@ -39,7 +42,7 @@ const certificates: Cert[] = [
 ];
 
 const CertCard = ({ c }: { c: Cert }) => {
-  const href = c.file ? `/certificates/${c.file}` : DRIVE_FOLDER;
+  const href = c.link || (c.file ? `/certificates/${c.file}` : DRIVE_FOLDER);
   
   return (
     <a
