@@ -105,6 +105,17 @@ const AnimatedBackground = () => {
       hue: Math.random() < 0.6 ? 'primary' : 'accent',
     }));
 
+    // Network nodes for the constellation effect
+    const baseNodeCount = Math.floor(Math.min(70, (width * height) / 15000) * tier);
+    const nodes = Array.from({ length: baseNodeCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 1,
+      hue: Math.random() < 0.5 ? 'primary' : 'accent',
+    }));
+
     let mouseX = width / 2;
     let mouseY = height / 2;
     let isMouseActive = false;
@@ -149,6 +160,7 @@ const AnimatedBackground = () => {
       const density = sectionDensity[sectionRef.current] ?? 0.6;
       const sCount = Math.floor(sparkles.length * density);
       const fCount = Math.floor(fireflies.length * density);
+      const nCount = Math.floor(nodes.length * density);
 
       // Sparkles
       for (let i = 0; i < sCount; i++) {
@@ -228,6 +240,80 @@ const AnimatedBackground = () => {
         ctx.beginPath();
         ctx.arc(f.x, f.y + py, f.r, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${color} / ${(0.35 + glow * 0.4) * alphaScale})`;
+        ctx.fill();
+      }
+
+      // Network Nodes (Constellation)
+      const maxDistance = 140;
+      for (let i = 0; i < nCount; i++) {
+        const n = nodes[i];
+        
+        // Mouse interaction (repel slightly or attract to create network)
+        if (isMouseActive) {
+          const dx = mouseX - n.x;
+          const dy = mouseY - n.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 180) {
+            const force = (180 - dist) / 180;
+            // Attract nodes to mouse to form a cluster
+            n.x += (dx / dist) * force * 1.5;
+            n.y += (dy / dist) * force * 1.5;
+            
+            // Draw line to mouse
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y - scrollY * 0.05);
+            ctx.lineTo(mouseX, mouseY - scrollY * 0.05);
+            const lineColor = n.hue === 'primary' ? primary : accent;
+            ctx.strokeStyle = `hsla(${lineColor} / ${force * 0.4 * alphaScale})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        n.x += n.vx;
+        n.y += n.vy;
+
+        // Bounce off walls
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        // Keep inside bounds just in case
+        if (n.x < 0) n.x = 0;
+        if (n.x > width) n.x = width;
+        if (n.y < 0) n.y = 0;
+        if (n.y > height) n.y = height;
+
+        const py = -scrollY * 0.05;
+        const color = n.hue === 'primary' ? primary : accent;
+
+        // Draw connections
+        for (let j = i + 1; j < nCount; j++) {
+          const n2 = nodes[j];
+          const dx = n.x - n2.x;
+          const dy = n.y - n2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < maxDistance) {
+            const opacity = (1 - dist / maxDistance) * 0.3 * alphaScale;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y + py);
+            ctx.lineTo(n2.x, n2.y + py);
+            ctx.strokeStyle = `hsla(${color} / ${opacity})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Draw node
+        ctx.beginPath();
+        ctx.arc(n.x, n.y + py, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${color} / ${0.7 * alphaScale})`;
+        ctx.fill();
+        
+        // Small halo
+        ctx.beginPath();
+        ctx.arc(n.x, n.y + py, n.r * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${color} / ${0.1 * haloScale})`;
         ctx.fill();
       }
 
