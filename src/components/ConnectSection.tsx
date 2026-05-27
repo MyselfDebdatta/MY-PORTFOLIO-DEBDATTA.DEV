@@ -502,10 +502,10 @@ const ConnectSection = () => {
             </a>
           </div>
           <iframe
-            src="https://calendly.com/myselfdeb11/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=0&background_color=0b1418&text_color=e6fffb&primary_color=14e0c2"
+            src="https://calendly.com/myselfdeb11/30min?hide_gdpr_banner=1&hide_landing_page_details=1&hide_event_type_details=0"
             title="Schedule a call with Debdatta"
             className="w-full bg-background"
-            style={{ height: 760, border: 0 }}
+            style={{ height: 760, border: 0, filter: 'invert(1) hue-rotate(180deg)' }}
             loading="lazy"
           />
         </motion.div>
