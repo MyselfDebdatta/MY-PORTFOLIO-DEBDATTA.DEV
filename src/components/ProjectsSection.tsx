@@ -8,6 +8,7 @@ import maintrixImg from '@/assets/project-maintrix.jpg';
 import ishaImg from '@/assets/project-isha.jpg';
 import autobleImg from '@/assets/project-autoble.jpg';
 import udyogImg from '@/assets/project-udyog.jpg';
+import zeroMomentumImg from '@/assets/project-zeromomentum.jpg';
 
 interface MemoryCard {
   id: number;
@@ -22,6 +23,49 @@ interface MemoryCard {
 }
 
 const memoryCards: MemoryCard[] = [
+  {
+    id: 7,
+    frontLabel: 'AI / PRODUCTIVITY',
+    title: 'ZeroMomentum AI',
+    tagline: 'From Deadlines to Done',
+    preview: 'AI task prioritization, scheduling, and habit tracking.',
+    image: zeroMomentumImg,
+    backDescription:
+      'ZeroMomentum AI turns intentions into achievements. It features AI Task Prioritization, Context-Aware Reminders, Calendar Integration, Voice-Enabled Assistance, and Productivity Analytics.',
+    liveUrl: 'https://zeromomentum-frontend-137186488200.asia-south1.run.app/',
+    projectDetail: {
+      id: 7,
+      name: 'ZeroMomentum AI',
+      tagline: 'From Deadlines to Done. Turning intentions into achievements.',
+      liveUrl: 'https://zeromomentum-frontend-137186488200.asia-south1.run.app/',
+      keyDetails: [
+        { label: 'Type', value: 'AI Productivity Platform' },
+        { label: 'Event', value: 'Vibe2Ship CodingNinjas x Google' },
+        { label: 'Status', value: 'Live' },
+      ],
+      focusAreas: ['Productivity', 'AI Assistance', 'Scheduling', 'Habit Tracking'],
+      techStack: ['React', 'TypeScript', 'Gemini', 'Google Calendar API', 'Gmail API', 'Firebase', 'Vertex AI', 'Google Cloud'],
+      about: {
+        problem:
+          'Managing tasks, deadlines, and habits across multiple tools leads to scattered focus and missed intentions. Traditional task managers lack the intelligence to actively help you prioritize or execute.',
+        solution:
+          'ZeroMomentum AI integrates directly with your Google ecosystem (Calendar, Gmail) to provide context-aware reminders, voice-enabled assistance, and autonomous task execution powered by Gemini and Vertex AI.',
+        goals:
+          'Build a seamless, intelligent productivity suite that adapts to the user\'s schedule and smartly prioritizes what matters most.',
+        engineering:
+          'Powered by Gemini and Vertex AI on Google Cloud, leveraging Firebase for real-time synchronization. Deep integrations with Google Calendar and Gmail create a cohesive, automated workflow.',
+        impact:
+          'Transforms how users approach their daily goals by shifting from passive task tracking to active, AI-driven accomplishment.',
+      },
+      team: [{ name: 'Debdatta Panda', role: 'Full-Stack Developer' }],
+      achievements: [
+        'AI Task Prioritization & Scheduling Assistance',
+        'Deep Google Calendar & Gmail Integration',
+        'Voice-Enabled Assistance & Autonomous Execution',
+        'Built for Vibe2Ship Hackathon',
+      ],
+    },
+  },
   {
     id: 1,
     frontLabel: 'AI / EDTECH',
