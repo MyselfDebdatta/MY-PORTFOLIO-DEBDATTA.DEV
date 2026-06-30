@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Code, Linkedin, Github, Sparkles, Rocket, Coffee, Trophy } from 'lucide-react';
-import profileImg from '@/assets/profile.png';
+import profileImg from '@/assets/profile.jpg';
 import { useI18n } from '@/lib/i18n';
 
 const HEADING_NAME = 'Debdatta Panda';
