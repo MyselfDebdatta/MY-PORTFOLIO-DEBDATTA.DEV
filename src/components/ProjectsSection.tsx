@@ -464,7 +464,7 @@ const ProjectsSection = () => {
                   return (
                     <div
                       key={card.id}
-                      className={`memory-card-3d electric-card ${isFlipped ? 'flipped' : ''}`}
+                      className={`memory-card-3d ${isFlipped ? 'flipped' : ''}`}
                       style={{
                         transform: `rotateY(${cardAngle}deg) translateZ(${radius}px)`,
                       }}
@@ -496,12 +496,12 @@ const ProjectsSection = () => {
                             <p className="text-[11px] text-muted-foreground mb-2 font-heading line-clamp-1">
                               {card.tagline}
                             </p>
-                            <div className="rounded-lg bg-background/40 overflow-hidden relative h-[140px]">
+                            <div className="rounded-lg bg-background/80 overflow-hidden relative h-[140px]">
                               {card.image ? (
                                 <img
                                   src={card.image}
                                   alt={card.title}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-contain p-1"
                                   loading="lazy"
                                 />
                               ) : (
@@ -511,7 +511,6 @@ const ProjectsSection = () => {
                                   </span>
                                 </div>
                               )}
-                              <div className="glitch-overlay" />
                             </div>
                             {/* Tech stack pills */}
                             <div className="flex flex-wrap gap-1 mt-2">
