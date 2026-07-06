@@ -6,7 +6,7 @@ import { useI18n } from '@/lib/i18n';
 
 const HEADING_NAME = 'Debdatta Panda';
 const TYPING_SPEED = 230; // ms per char
-const RESUME_URL = 'https://drive.google.com/file/d/1k6F4l-bzxIsU9YWqEFtIxRMfw0uoVmZp/view?usp=drivesdk';
+const RESUME_URL = 'https://drive.google.com/file/d/1Y34FNEJduDqOzxAvlnPHfQ6_mL0Lmpod/view?usp=drivesdk';
 const ROLE_TYPE_SPEED = 65;
 const ROLE_DELETE_SPEED = 35;
 const ROLE_HOLD_MS = 1400;

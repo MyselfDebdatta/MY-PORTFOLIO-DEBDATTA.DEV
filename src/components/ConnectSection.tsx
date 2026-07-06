@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { toast } from 'sonner';
 import emailjs from '@emailjs/browser';
 
-const RESUME_URL = 'https://drive.google.com/file/d/1k6F4l-bzxIsU9YWqEFtIxRMfw0uoVmZp/view?usp=drivesdk';
+const RESUME_URL = 'https://drive.google.com/file/d/1Y34FNEJduDqOzxAvlnPHfQ6_mL0Lmpod/view?usp=drivesdk';
 const WHATSAPP_URL = 'https://wa.me/918637377080';
 const PHONE_DISPLAY = '+91 86373 77080';
 const PHONE_TEL = '+918637377080';
