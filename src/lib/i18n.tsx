@@ -7,6 +7,7 @@ const dict: Record<string, string> = {
   'nav.about': 'About',
   'nav.journey': 'Journey',
   'nav.tech': 'Tech',
+  'nav.experience': 'Experience',
   'nav.projects': 'Projects',
   'nav.connect': 'Connect',
   'nav.achievements': 'Awards',

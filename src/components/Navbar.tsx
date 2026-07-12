@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Volume2, VolumeX, Home, User, Cpu, FolderGit2, Mail, GitBranch, RotateCcw, Command, Trophy } from 'lucide-react';
+import { Menu, X, Sun, Moon, Volume2, VolumeX, Home, User, Cpu, FolderGit2, Mail, GitBranch, RotateCcw, Command, Trophy, Briefcase } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import MusicVisualizer from './MusicVisualizer';
 import { toast } from 'sonner';
@@ -11,6 +11,7 @@ const navItems = [
   { label: 'About', href: '#about', Icon: User, key: 'nav.about' },
   { label: 'Journey', href: '#journey', Icon: GitBranch, key: 'nav.journey' },
   { label: 'Tech', href: '#techstack', Icon: Cpu, key: 'nav.tech' },
+  { label: 'Experience', href: '#experience', Icon: Briefcase, key: 'nav.experience' },
   { label: 'Projects', href: '#projects', Icon: FolderGit2, key: 'nav.projects' },
   { label: 'Awards', href: '#achievements', Icon: Trophy, key: 'nav.achievements' },
   { label: 'Connect', href: '#connect', Icon: Mail, key: 'nav.connect' },

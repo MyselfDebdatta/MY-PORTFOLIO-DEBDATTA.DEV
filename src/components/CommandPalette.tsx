@@ -3,7 +3,7 @@ import {
   CommandDialog, CommandInput, CommandList, CommandEmpty,
   CommandGroup, CommandItem, CommandSeparator,
 } from '@/components/ui/command';
-import { Home, User, GitBranch, Cpu, FolderGit2, Mail, Trophy, Sun, RotateCcw, FileText, Linkedin, Github, Instagram, MessageCircle, Phone, CalendarDays, PanelBottom } from 'lucide-react';
+import { Home, User, GitBranch, Cpu, FolderGit2, Mail, Trophy, Sun, RotateCcw, FileText, Linkedin, Github, Instagram, MessageCircle, Phone, CalendarDays, PanelBottom, Briefcase } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { toast } from 'sonner';
 
@@ -18,6 +18,7 @@ const sections = [
   { id: 'about', icon: User, key: 'nav.about' },
   { id: 'journey', icon: GitBranch, key: 'nav.journey' },
   { id: 'techstack', icon: Cpu, key: 'nav.tech' },
+  { id: 'experience', icon: Briefcase, key: 'nav.experience' },
   { id: 'projects', icon: FolderGit2, key: 'nav.projects' },
   { id: 'achievements', icon: Trophy, key: 'nav.achievements' },
   { id: 'connect', icon: Mail, key: 'nav.connect' },

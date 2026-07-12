@@ -11,7 +11,16 @@ const Footer = () => {
           <span className="text-foreground/80">Debdatta Panda</span>
         </p>
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
-          {[{ label: 'Home', id: 'home' }, { label: 'About', id: 'about' }, { label: 'Journey', id: 'journey' }, { label: 'Tech', id: 'techstack' }, { label: 'Projects', id: 'projects' }, { label: 'Awards', id: 'achievements' }, { label: 'Connect', id: 'connect' }].map((item) => (
+          {[
+            { label: 'Home', id: 'home' }, 
+            { label: 'About', id: 'about' }, 
+            { label: 'Journey', id: 'journey' }, 
+            { label: 'Tech', id: 'techstack' }, 
+            { label: 'Experience', id: 'experience' }, 
+            { label: 'Projects', id: 'projects' }, 
+            { label: 'Awards', id: 'achievements' }, 
+            { label: 'Connect', id: 'connect' }
+          ].map((item) => (
             <a
               key={item.label}
               href={`#${item.id}`}
