@@ -6,6 +6,7 @@ import InterestsMarquee from '@/components/InterestsMarquee';
 import AboutSection from '@/components/AboutSection';
 import JourneySection from '@/components/JourneySection';
 import TechStackSection from '@/components/TechStackSection';
+import ExperienceSection from '@/components/ExperienceSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import AchievementsWall from '@/components/AchievementsWall';
 import ConnectSection from '@/components/ConnectSection';
@@ -45,6 +46,7 @@ const Index = () => {
             <AboutSection />
             <JourneySection />
             <TechStackSection />
+            <ExperienceSection />
             <ProjectsSection />
             <AchievementsWall />
             <ConnectSection />
