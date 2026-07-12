@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Trophy, Award, BadgeCheck, Sparkles, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Trophy, Award, BadgeCheck, Sparkles, ExternalLink, FileText, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 const DRIVE_FOLDER = 'https://drive.google.com/drive/folders/1Gbzsw399gKczNwpN7oemDiRz1M9v7uMN';
@@ -38,18 +39,125 @@ const certificates: Cert[] = [
   { title: 'Introduction to Artificial Intelligence', issuer: 'SimpliLearn', date: 'Oct 2025', tag: 'AI/ML', file: 'INTRODUCTION TO AI BY SIMPLILEARN .pdf' },
   { title: 'Java Bootcamp', issuer: 'LetsUpgrade', date: '2025', tag: 'Programming', file: "JAVA BOOTCAMP LET'S UPGRADE.pdf" },
   { title: 'Student Ambassador', issuer: 'LetsUpgrade EdTech', date: 'Nov 2025 – Feb 2026', tag: 'Leadership', file: "APPOINTMENT LETTER_LET'S UPGRADE.pdf" },
-  { title: 'Web Development Bootcamp', issuer: 'LetsUpgrade', date: '2025', tag: 'Web Dev' },
 ];
 
-const CertCard = ({ c }: { c: Cert }) => {
+// Document Modal Component
+const DocumentModal = ({ url, title, onClose, onPrev, onNext }: { url: string, title: string, onClose: () => void, onPrev: () => void, onNext: () => void }) => {
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (diff > 50) {
+      onNext();
+    } else if (diff < -50) {
+      onPrev();
+    }
+    setTouchStart(null);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') onNext();
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onNext, onPrev, onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-md p-4 md:p-8"
+      onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <button 
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 p-3 md:p-4 rounded-full bg-background/50 hover:bg-primary/20 hover:text-primary backdrop-blur text-foreground border border-border/50 transition-colors z-[110]"
+      >
+        <ChevronLeft size={28} />
+      </button>
+
+      <button 
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 p-3 md:p-4 rounded-full bg-background/50 hover:bg-primary/20 hover:text-primary backdrop-blur text-foreground border border-border/50 transition-colors z-[110]"
+      >
+        <ChevronRight size={28} />
+      </button>
+
+      <motion.div
+        initial={{ y: 50, scale: 0.95 }}
+        animate={{ y: 0, scale: 1 }}
+        exit={{ y: 20, scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="w-full max-w-5xl h-[85vh] bg-card border border-border/50 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.5)] relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between p-4 border-b border-border/30 bg-background/80 backdrop-blur shrink-0">
+          <div className="flex items-center gap-2">
+            <FileText size={16} className="text-primary" />
+            <span className="text-sm font-mono text-foreground uppercase tracking-widest">{title}</span>
+          </div>
+          <button onClick={onClose} className="p-2 rounded-lg hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-colors">
+            <X size={20} />
+          </button>
+        </div>
+        
+        <div className="flex-1 w-full bg-black/40 p-2 md:p-4 flex flex-col items-center justify-center overflow-hidden">
+          {url === DRIVE_FOLDER ? (
+            <div className="flex flex-col items-center justify-center text-center p-8 bg-background/50 rounded-xl border border-border/50 max-w-md w-full backdrop-blur-md shadow-2xl">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/30 mb-6 shadow-[0_0_30px_hsl(var(--primary)/0.2)]">
+                <Award className="text-primary" size={32} />
+              </div>
+              <h3 className="font-display text-xl font-bold mb-3 text-foreground tracking-wide">Documentation Pending</h3>
+              <p className="text-sm text-muted-foreground mb-8 font-heading leading-relaxed">
+                The high-resolution copy of this certificate is currently being processed or is stored securely in the master drive.
+              </p>
+              <a href={DRIVE_FOLDER} target="_blank" rel="noreferrer" className="neon-button !py-3">
+                Access Master Drive
+              </a>
+            </div>
+          ) : url.match(/\.(jpeg|jpg|gif|png)$/i) ? (
+            <img 
+              src={url} 
+              alt={title}
+              className="max-w-full max-h-full object-contain rounded-xl"
+            />
+          ) : (
+            <iframe 
+              src={url.includes('#') ? `${url}&toolbar=0&navpanes=0&scrollbar=0` : `${url}#toolbar=0&navpanes=0&scrollbar=0`} 
+              className="w-full h-full rounded-xl bg-white shadow-inner"
+              title={title}
+            />
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const CertCard = ({ c, onView }: { c: Cert, onView: () => void }) => {
   const href = c.link || (c.file ? `/certificates/${c.file}` : DRIVE_FOLDER);
   
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative glass-panel neon-border p-3 sm:p-4 flex flex-col gap-3 overflow-hidden w-[260px] sm:w-[300px] shrink-0 hover:scale-[1.02] transition-transform"
+    <button
+      onClick={onView}
+      className="group relative glass-panel neon-border p-3 sm:p-4 flex flex-col gap-3 overflow-hidden w-[260px] sm:w-[300px] shrink-0 hover:scale-[1.02] transition-transform text-left"
       style={{ minHeight: 280 }}
     >
       <div
@@ -87,12 +195,27 @@ const CertCard = ({ c }: { c: Cert }) => {
           View <ExternalLink size={10} />
         </span>
       </div>
-    </a>
+    </button>
   );
 };
 
 const AchievementsWall = () => {
   const { t } = useI18n();
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+
+  const handleNext = () => {
+    if (selectedIdx === null) return;
+    setSelectedIdx((selectedIdx + 1) % certificates.length);
+  };
+
+  const handlePrev = () => {
+    if (selectedIdx === null) return;
+    setSelectedIdx((selectedIdx - 1 + certificates.length) % certificates.length);
+  };
+  
+  const currentCert = selectedIdx !== null ? certificates[selectedIdx] : null;
+  const currentUrl = currentCert ? (currentCert.link || (currentCert.file ? `/certificates/${currentCert.file}` : DRIVE_FOLDER)) : '';
+
   const half = Math.ceil(certificates.length / 2);
   const rowA = certificates.slice(0, half);
   const rowB = certificates.slice(half);
@@ -130,9 +253,10 @@ const AchievementsWall = () => {
             animate={{ x: ['-50%', '0%'] }}
             transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
           >
-            {[...rowA, ...rowA].map((c, i) => (
-              <CertCard key={`a-${i}`} c={c} />
-            ))}
+            {[...rowA, ...rowA].map((c, i) => {
+              const actualIdx = certificates.indexOf(c);
+              return <CertCard key={`a-${i}`} c={c} onView={() => setSelectedIdx(actualIdx)} />
+            })}
           </motion.div>
         </div>
 
@@ -145,9 +269,10 @@ const AchievementsWall = () => {
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 70, repeat: Infinity, ease: 'linear' }}
           >
-            {[...rowB, ...rowB].map((c, i) => (
-              <CertCard key={`b-${i}`} c={c} />
-            ))}
+            {[...rowB, ...rowB].map((c, i) => {
+              const actualIdx = certificates.indexOf(c);
+              return <CertCard key={`b-${i}`} c={c} onView={() => setSelectedIdx(actualIdx)} />
+            })}
           </motion.div>
         </div>
       </div>
@@ -162,6 +287,18 @@ const AchievementsWall = () => {
           <ExternalLink size={14} /> {t('awards.viewAll')}
         </a>
       </div>
+
+      <AnimatePresence>
+        {selectedIdx !== null && currentCert && (
+          <DocumentModal 
+            url={currentUrl} 
+            title={currentCert.title} 
+            onClose={() => setSelectedIdx(null)} 
+            onNext={handleNext}
+            onPrev={handlePrev}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
