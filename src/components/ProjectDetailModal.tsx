@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Target, Zap, Users, Trophy, Lightbulb, Wrench, Rocket, BarChart3, Shield } from 'lucide-react';
+import { X, ExternalLink, Target, Zap, Users, Trophy, Lightbulb, Wrench, Rocket, BarChart3, Shield, Image as ImageIcon } from 'lucide-react';
 
 interface TeamMember {
   name: string;
@@ -24,6 +24,7 @@ interface ProjectDetail {
   };
   team: TeamMember[];
   achievements: string[];
+  gallery?: string[];
 }
 
 interface Props {
@@ -149,6 +150,28 @@ const ProjectDetailModal = ({ project, onClose }: Props) => {
                 ))}
               </div>
             </div>
+
+            {/* Project Gallery */}
+            {project.gallery && project.gallery.length > 0 && (
+              <div>
+                <h3 className="text-lg font-display font-bold text-foreground flex items-center gap-2 mb-4">
+                  <ImageIcon size={20} className="text-primary" /> Project Gallery
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.gallery.map((imgSrc, i) => (
+                    <div key={i} className="rounded-xl overflow-hidden border border-border/30 bg-muted/20 relative group aspect-video">
+                      <img 
+                        src={imgSrc} 
+                        alt={`${project.name} gallery image ${i + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Team Members */}
             <div>

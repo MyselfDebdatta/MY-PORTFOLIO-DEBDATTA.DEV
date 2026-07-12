@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, Search, Github, Phone, CalendarDays, Sparkles, MessageCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Search, Github, Phone, CalendarDays, Sparkles, MessageCircle, Zap, Brain, BookOpen, Code2, Settings, Globe, Cpu, Scale } from 'lucide-react';
 import ProjectDetailModal, { type ProjectDetail } from './ProjectDetailModal';
 import nexusLearnImg from '@/assets/project-nexus-learn.jpg';
 import portfolioImg from '@/assets/project-portfolio.jpg';
@@ -19,6 +19,7 @@ interface MemoryCard {
   image: string;
   backDescription: string;
   liveUrl?: string;
+  coreIcon: React.ElementType;
   projectDetail: ProjectDetail;
 }
 
@@ -33,6 +34,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       'ZeroMomentum AI turns intentions into achievements. It features AI Task Prioritization, Context-Aware Reminders, Calendar Integration, Voice-Enabled Assistance, and Productivity Analytics.',
     liveUrl: 'https://zeromomentum-frontend-137186488200.asia-south1.run.app/',
+    coreIcon: Brain,
     projectDetail: {
       id: 7,
       name: 'ZeroMomentum AI',
@@ -64,6 +66,10 @@ const memoryCards: MemoryCard[] = [
         'Voice-Enabled Assistance & Autonomous Execution',
         'Built for Vibe2Ship Hackathon',
       ],
+      gallery: [
+        zeroMomentumImg,
+        portfolioImg,
+      ],
     },
   },
   {
@@ -76,6 +82,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       '1 in 3 students burns out before they graduate. Most institutions find out too late. We built NEXUS LEARN — an AI-powered platform with 3 engines (SENTINEL, APOLLO, IRIS) running in parallel to monitor wellbeing, predict dropout risk, and adapt learning environments in real time.',
     liveUrl: 'https://lnkd.in/g-MJd8HQ',
+    coreIcon: BookOpen,
     projectDetail: {
       id: 1,
       name: 'NEXUS LEARN',
@@ -115,6 +122,10 @@ const memoryCards: MemoryCard[] = [
         '72-hour cognitive fatigue forecasting',
         'Real-time adaptive reading environment',
       ],
+      gallery: [
+        nexusLearnImg,
+        portfolioImg,
+      ],
     },
   },
   {
@@ -127,6 +138,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       'My personal portfolio — a cinematic, cyber-neon experience featuring a terminal boot intro, 3D project carousel, animated journey timeline, glittering particle background, and live typewriter roles. Built end-to-end as a showcase of design, engineering, and storytelling.',
     liveUrl: 'https://debdatta-panda.vercel.app/',
+    coreIcon: Code2,
     projectDetail: {
       id: 2,
       name: 'debdatta.dev — Portfolio',
@@ -161,6 +173,10 @@ const memoryCards: MemoryCard[] = [
         'Light + Dark theme with full semantic token system',
         'Lighthouse-friendly performance with lazy-loaded sections',
       ],
+      gallery: [
+        portfolioImg,
+        nexusLearnImg,
+      ],
     },
   },
   {
@@ -173,6 +189,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       'Maintrix is a modern office maintenance and ticket management platform that streamlines workflows between employees, managers and technicians with role-based dashboards, real-time chat and full issue tracking. Deployed on Google Cloud Run.',
     liveUrl: 'https://maintrix-44806187079.us-central1.run.app',
+    coreIcon: Settings,
     projectDetail: {
       id: 3,
       name: 'MAINTRIX — Office Maintenance Software',
@@ -205,6 +222,10 @@ const memoryCards: MemoryCard[] = [
         'Real-time chat embedded per ticket',
         'Containerised deployment on Google Cloud Run',
       ],
+      gallery: [
+        maintrixImg,
+        portfolioImg,
+      ],
     },
   },
   {
@@ -217,6 +238,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       'ISHA is a full-stack asteroid risk intelligence platform built on NASA NeoWs data. It analyzes near-Earth objects in real time, scores threat levels with physics-based risk modelling, and delivers user-specific monitoring with interactive 3D orbital visualisation.',
     liveUrl: 'https://myselfdebdatta.github.io/ISHA-Intelligent-Space-Hazard-Analysis-/',
+    coreIcon: Globe,
     projectDetail: {
       id: 4,
       name: 'ISHA — Intelligent Space Hazard Analysis',
@@ -254,6 +276,10 @@ const memoryCards: MemoryCard[] = [
         'Interactive 3D orbital visualisation dashboard',
         'Secure per-user watchlists and alerts',
       ],
+      gallery: [
+        ishaImg,
+        portfolioImg,
+      ],
     },
   },
   {
@@ -266,6 +292,7 @@ const memoryCards: MemoryCard[] = [
     backDescription:
       'AutoBLE is a portable, fully offline inventory system that pairs ESP32 with BLE beacons. Tagged containers are detected via RSSI proximity and auto-verified on a real-time React dashboard served directly from the ESP32 hotspot. Note: As it\'s a hardware-based project, the website is not functional without the hardware model, but it is provided for a better understanding of the project.',
     liveUrl: 'https://MyselfDebdatta.github.io/AutoBLE_SMART-INVENTORY_VERIFIED-BY-PROXIMITY/',
+    coreIcon: Cpu,
     projectDetail: {
       id: 5,
       name: 'AutoBLE — Smart Inventory Verified by Proximity',
@@ -298,6 +325,10 @@ const memoryCards: MemoryCard[] = [
         '100% offline operation — no cloud dependency',
         'Custom SVG visualisation for live tag status',
       ],
+      gallery: [
+        autobleImg,
+        portfolioImg,
+      ],
     },
   },
   {
@@ -309,6 +340,7 @@ const memoryCards: MemoryCard[] = [
     image: udyogImg,
     backDescription:
       'Udyog-Sarthi is an AI-powered compliance co-pilot for MSMEs in India. It simplifies regulatory processes through guided step-by-step flows backed by verified data, helping small businesses navigate licensing, taxation and statutory filings with confidence.',
+    coreIcon: Scale,
     projectDetail: {
       id: 6,
       name: 'Udyog Sarthi — AI Compliance Co-Pilot',
@@ -344,6 +376,10 @@ const memoryCards: MemoryCard[] = [
         'Conversational, source-cited compliance guidance',
         'Designed for India\'s 60M+ MSME audience',
         'Adaptive multi-step regulatory workflows',
+      ],
+      gallery: [
+        udyogImg,
+        portfolioImg,
       ],
     },
   },
@@ -473,7 +509,7 @@ const ProjectsSection = () => {
                       <div className="card-inner-3d">
                         {/* Front */}
                         <div className="card-face-front">
-                          <div className="p-4 h-full flex flex-col">
+                          <div className="p-4 h-full flex flex-col w-full bg-card/10 backdrop-blur-sm">
                             <div className="flex items-center justify-between gap-2 mb-1">
                               <span
                                 className="text-[10px] font-display tracking-widest text-primary uppercase truncate"
@@ -533,14 +569,25 @@ const ProjectsSection = () => {
                           <div className="card-glow-3d" />
                         </div>
                         {/* Back */}
-                        <div className="card-face-back">
-                          <div className="p-5 h-full flex flex-col">
-                            <h3 className="text-lg font-display font-bold text-foreground mb-2">
+                        <div className="card-face-back bg-card">
+                          <div className="p-6 h-full flex flex-col w-full relative z-10">
+                            <h3 className="text-xl font-display font-bold text-foreground mb-3 border-b border-border/50 pb-2">
                               {card.title}
                             </h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed flex-1 font-heading overflow-y-auto pr-1">
+                            <p className="text-[13px] text-foreground/90 leading-relaxed font-heading overflow-y-auto pr-2 mb-4" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                               {card.backDescription}
                             </p>
+                            
+                            {/* Quantum Tech Core */}
+                            <div className="flex-1 flex items-center justify-center min-h-[80px] relative w-full my-2">
+                              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div className="w-16 h-16 border-[1px] border-primary/40 rounded-full animate-[spin_4s_linear_infinite] border-t-primary" />
+                                <div className="absolute w-12 h-12 border-[1px] border-primary/30 rounded-full animate-[spin_3s_linear_infinite_reverse] border-b-primary" />
+                                <div className="absolute w-8 h-8 border-[1px] border-primary/20 rounded-full animate-[spin_2s_linear_infinite] border-l-primary" />
+                                <div className="absolute w-10 h-10 bg-primary/10 rounded-full blur-md animate-pulse" />
+                                <card.coreIcon className="absolute text-primary/80 animate-pulse" size={14} />
+                              </div>
+                            </div>
                             <div className="flex gap-2 mt-4 shrink-0">
                               {card.liveUrl && (
                                 <a
