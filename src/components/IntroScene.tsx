@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CyberBackground from './CyberBackground';
 
 interface IntroSceneProps {
   onComplete: () => void;
@@ -21,22 +22,7 @@ const bootLines = [
   { t: 'launch', text: '> Launching portfolio...' },
 ];
 
-const codeSnippets = [
-  "function init() {",
-  "  const sys = new System();",
-  "  sys.boot();",
-  "}",
-  "while(true) {",
-  "  await process();",
-  "}",
-  "export const config = {",
-  "  env: 'production',",
-  "  port: 8080",
-  "};",
-  "// Establishing connection...",
-  "[OK] Kernel loaded",
-  "sys.mount('/dev/sda1')",
-];
+
 
 /**
  * Terminal boot sequence intro — fast, immersive, no heavy 3D.
@@ -101,53 +87,8 @@ const IntroScene = ({ onComplete }: IntroSceneProps) => {
           exit={{ opacity: 0, scale: 1.05, filter: 'blur(8px)' }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          {/* Background Code Rain & Data Streams */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Professional Clean Radial Background */}
-            <motion.div
-              animate={{ opacity: [0.6, 0.9, 0.6] }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute inset-0"
-              style={{
-                background: 'radial-gradient(circle at 50% -20%, hsl(var(--primary)/0.25) 0%, transparent 75%)'
-              }}
-            />
-            {/* Vertical Data Streams (Lasers) */}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={`laser-${i}`}
-                initial={{ top: '-20%', opacity: 0 }}
-                animate={{ top: '120%', opacity: [0, 1, 1, 0] }}
-                transition={{
-                  duration: 2.5 + (i % 3),
-                  repeat: Infinity,
-                  delay: i * 0.4,
-                  ease: 'linear',
-                }}
-                className="absolute w-[1px] h-[20vh] bg-gradient-to-b from-transparent via-primary/40 to-primary/80"
-                style={{ left: `${10 + i * 11}%`, boxShadow: '0 0 10px hsl(var(--primary)/0.5)' }}
-              />
-            ))}
-            
-            {/* Falling Code Snippets */}
-            {codeSnippets.map((snippet, i) => (
-              <motion.div
-                key={`code-${i}`}
-                initial={{ y: '-100%', opacity: 0 }}
-                animate={{ y: '120vh', opacity: [0, 0.9, 0.9, 0] }}
-                transition={{
-                  duration: 8 + Math.random() * 8,
-                  repeat: Infinity,
-                  delay: Math.random() * 5,
-                  ease: 'linear',
-                }}
-                className="absolute text-primary font-mono text-[10px] sm:text-xs whitespace-pre drop-shadow-[0_0_5px_hsl(var(--primary)/0.6)]"
-                style={{ left: `${(i * 7) % 95}%` }}
-              >
-                {snippet}
-              </motion.div>
-            ))}
-          </div>
+          {/* Mind-blowing 3D WebGL Background */}
+          <CyberBackground />
 
           {/* Terminal window */}
           <motion.div
