@@ -267,7 +267,7 @@ const ExperienceSection = () => {
                       <div className="flex flex-wrap gap-2">
                         {activeExp.skills.map((skill) => (
                           <span key={skill} className="px-2.5 py-1 rounded text-xs font-mono tracking-wider border border-primary/20 text-primary/90 bg-primary/5">
-                            <ScrambleText text={skill} />
+                            {skill}
                           </span>
                         ))}
                       </div>
