@@ -48,7 +48,7 @@ const experiences = [
   }
 ];
 
-const CHARS = '01#$<>[]{}—=+*^?_';
+const CHARS = '01#$<>[]{}x=+*^?_';
 const ScrambleText = ({ text }: { text: string }) => {
   const [displayText, setDisplayText] = useState(
     text.replace(/./g, (c) => (c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]))
@@ -243,13 +243,16 @@ const ExperienceSection = () => {
                       {activeExp.status}
                     </span>
                     
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 leading-tight min-h-[64px] md:min-h-[72px] flex items-center">
                       <ScrambleText text={activeExp.title} />
                     </h3>
                     
                     <div className="mt-auto space-y-3">
-                      <div className="flex items-center gap-3 text-sm font-heading text-primary/90">
-                        <Briefcase size={16} /> <ScrambleText text={activeExp.company} />
+                      <div className="flex items-center gap-3 text-sm font-heading text-primary/90 min-h-[40px]">
+                        <Briefcase size={16} className="shrink-0" /> 
+                        <div className="flex-1">
+                          <ScrambleText text={activeExp.company} />
+                        </div>
                       </div>
                       <div className="flex items-center gap-3 text-sm font-heading text-muted-foreground">
                         <MapPin size={16} /> {activeExp.location}
