@@ -18,7 +18,7 @@ const experiences = [
     ],
     skills: ['Python', 'Streamlit', 'Ollama', 'Groq', 'LangChain', 'ChromaDB'],
     link: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
-    offerLetterUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with real URL later
+    offerLetterUrl: '/iocl_internship_offer_letter.pdf',
     certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with real URL later
     gallery: [
       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
