@@ -254,7 +254,7 @@ const ExperienceSection = () => {
                         {activeExp.description.map((item, i) => (
                           <li key={i} className="flex items-start gap-3 text-[13px] text-foreground/75 font-heading leading-relaxed">
                             <span className="mt-1.5 text-primary shrink-0">▹</span>
-                            <span><ScrambleText text={item} /></span>
+                            <span>{item}</span>
                           </li>
                         ))}
                       </ul>
