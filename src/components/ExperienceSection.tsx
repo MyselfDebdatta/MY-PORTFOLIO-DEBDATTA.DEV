@@ -48,33 +48,6 @@ const experiences = [
   }
 ];
 
-const CHARS = '01#$<>[]{}x=+*^?_';
-const ScrambleText = ({ text }: { text: string }) => {
-  const [displayText, setDisplayText] = useState(
-    text.replace(/./g, (c) => (c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]))
-  );
-
-  useEffect(() => {
-    let iteration = 0;
-    const interval = setInterval(() => {
-      setDisplayText(() =>
-        text
-          .split('')
-          .map((char, index) => {
-            if (index < iteration) return text[index];
-            return char === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)];
-          })
-          .join('')
-      );
-      if (iteration >= text.length) clearInterval(interval);
-      iteration += 1 / 3;
-    }, 25);
-    return () => clearInterval(interval);
-  }, [text]);
-
-  return <span>{displayText}</span>;
-};
-
 // Document Modal Component
 const DocumentModal = ({ url, title, onClose }: { url: string, title: string, onClose: () => void }) => {
   // Prevent body scroll when modal is open
@@ -243,15 +216,15 @@ const ExperienceSection = () => {
                       {activeExp.status}
                     </span>
                     
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 leading-tight min-h-[64px] md:min-h-[72px] flex items-center">
-                      <ScrambleText text={activeExp.title} />
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 leading-tight">
+                      {activeExp.title}
                     </h3>
                     
                     <div className="mt-auto space-y-3">
-                      <div className="flex items-center gap-3 text-sm font-heading text-primary/90 min-h-[40px]">
+                      <div className="flex items-center gap-3 text-sm font-heading text-primary/90">
                         <Briefcase size={16} className="shrink-0" /> 
                         <div className="flex-1">
-                          <ScrambleText text={activeExp.company} />
+                          {activeExp.company}
                         </div>
                       </div>
                       <div className="flex items-center gap-3 text-sm font-heading text-muted-foreground">
@@ -324,7 +297,7 @@ const ExperienceSection = () => {
                           <FileText size={16} className="text-primary" />
                         </div>
                         <div className="text-left">
-                          <div className="text-sm font-bold font-mono text-primary uppercase tracking-wider mb-1"><ScrambleText text="Offer Letter" /></div>
+                          <div className="text-sm font-bold font-mono text-primary uppercase tracking-wider mb-1">Offer Letter</div>
                           <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Verified Document</div>
                         </div>
                       </button>
@@ -337,7 +310,7 @@ const ExperienceSection = () => {
                           <Award size={16} className="text-accent" />
                         </div>
                         <div className="text-left">
-                          <div className="text-sm font-bold font-mono text-accent uppercase tracking-wider mb-1"><ScrambleText text="Completion Certificate" /></div>
+                          <div className="text-sm font-bold font-mono text-accent uppercase tracking-wider mb-1">Completion Certificate</div>
                           <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Verified Document</div>
                         </div>
                       </button>
