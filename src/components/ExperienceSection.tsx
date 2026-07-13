@@ -1,23 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, MapPin, Calendar, Code2, Sparkles, FolderLock, ChevronRight, LayoutGrid, Image as ImageIcon, ChevronLeft, FileText, Award, X } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, Code2, Sparkles, FolderLock, ChevronRight, LayoutGrid, Image as ImageIcon, ChevronLeft, FileText, Award, X, ExternalLink } from 'lucide-react';
 
 const experiences = [
   {
     id: 1,
-    title: 'Software Engineering Intern',
-    company: 'Tech Corp Innovation',
-    location: 'Remote',
-    date: 'Present',
-    status: 'Ongoing',
+    title: 'Software Engineer Intern (SWE)',
+    company: 'IOCL (Indian Oil Corporation Limited), Haldia Refinery',
+    location: 'Haldia, India',
+    date: 'June 15, 2026 - July 13, 2026',
+    status: 'Completed',
     description: [
-      'Architecting a highly scalable microservices platform using Node.js and Docker.',
-      'Integrating large language models (LLMs) to automate internal compliance workflows.',
-      'Improving frontend performance by 40% through React code-splitting and asset optimization.'
+      'Engineered Argus Bid AI, a production-grade deterministic AI-driven tender auditing and compliance platform from scratch.',
+      'Developed a 100% deterministic rule engine eliminating hallucinations in procurement evaluation, with explainable audit trails (XAI).',
+      'Designed a Dual-Model Hybrid RAG engine leveraging Ollama for local secure processing and Groq API for rapid cloud execution.',
+      'Built a custom client-side PDF.js rendering engine to natively render multi-megabyte PDFs in the browser for secure document inspection.'
     ],
-    skills: ['React', 'Node.js', 'Docker', 'LLMs', 'GCP'],
-    offerLetterUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Dummy PDF for testing
-    certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    skills: ['Python', 'Streamlit', 'Ollama', 'Groq', 'LangChain', 'ChromaDB'],
+    link: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
+    offerLetterUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with real URL later
+    certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with real URL later
     gallery: [
       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
       'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
@@ -255,6 +257,14 @@ const ExperienceSection = () => {
                       <div className="flex items-center gap-3 text-sm font-heading text-muted-foreground">
                         <Calendar size={16} /> {activeExp.date}
                       </div>
+                      {'link' in activeExp && activeExp.link && (
+                        <div className="flex items-center gap-3 text-sm font-heading text-primary mt-4 pt-2 border-t border-border/50">
+                          <ExternalLink size={16} /> 
+                          <a href={activeExp.link as string} target="_blank" rel="noreferrer" className="hover:underline underline-offset-4 line-clamp-1">
+                            View Project Repository
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
 
