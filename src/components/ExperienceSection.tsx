@@ -18,8 +18,10 @@ const experiences = [
     ],
     skills: ['Python', 'Streamlit', 'Ollama', 'Groq', 'LangChain', 'ChromaDB'],
     link: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
-    offerLetterUrl: '/journey/iocl/iocl_internship_offer_letter.pdf',
-    certificateUrl: '/journey/iocl/iocl_internship_completion_certificate.pdf',
+    documents: [
+      { title: 'Offer Letter', type: 'offer', url: '/journey/iocl/iocl_internship_offer_letter.pdf' },
+      { title: 'Completion Certificate', type: 'certificate', url: '/journey/iocl/iocl_internship_completion_certificate.pdf' }
+    ],
     gallery: [
       '/journey/iocl/1.jpeg',
       '/journey/iocl/2.jpeg',
@@ -50,8 +52,13 @@ const experiences = [
     ],
     skills: ['Python', 'Scikit-Learn', 'DuckDB', 'Pandas', 'Google Colab'],
     link: 'https://github.com/MyselfDebdatta/FlyRank-ML-INTERNSHIP-STARTER',
-    offerLetterUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    documents: [
+      { title: 'Gmail Confirmation', type: 'offer', url: '/journey/flyrank/flyrank_gmail_confirmation.pdf' },
+      { title: 'Offer Letter 1', type: 'offer', url: '/journey/flyrank/flyrank_offer_letter_1.pdf' },
+      { title: 'Offer Letter 2', type: 'offer', url: '/journey/flyrank/flyrank_offer_letter_2.pdf' },
+      { title: 'Engagement Letter', type: 'offer', url: '/journey/flyrank/flyrank_engagement_letter.pdf' },
+      { title: 'Completion Certificate', type: 'certificate', url: 'ongoing' }
+    ],
     gallery: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
       'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
@@ -300,31 +307,36 @@ const ExperienceSection = () => {
                     </div>
 
                     <div className="flex flex-col gap-4 mt-6 relative z-10">
-                      <button 
-                        onClick={() => setSelectedDoc({url: activeExp.offerLetterUrl, title: 'Offer Letter'})}
-                        className="w-full flex items-center gap-4 p-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/50 transition-all group/btn"
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-background flex items-center justify-center shrink-0 border border-border/50 group-hover/btn:border-primary/50 transition-colors">
-                          <FileText size={16} className="text-primary" />
-                        </div>
-                        <div className="text-left">
-                          <div className="text-sm font-bold font-mono text-primary uppercase tracking-wider mb-1">Offer Letter</div>
-                          <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Verified Document</div>
-                        </div>
-                      </button>
-
-                      <button 
-                        onClick={() => setSelectedDoc({url: activeExp.certificateUrl, title: 'Completion Certificate'})}
-                        className="w-full flex items-center gap-4 p-4 rounded-xl border border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/50 transition-all group/btn"
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-background flex items-center justify-center shrink-0 border border-border/50 group-hover/btn:border-accent/50 transition-colors">
-                          <Award size={16} className="text-accent" />
-                        </div>
-                        <div className="text-left">
-                          <div className="text-sm font-bold font-mono text-accent uppercase tracking-wider mb-1">Completion Certificate</div>
-                          <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Verified Document</div>
-                        </div>
-                      </button>
+                      {activeExp.documents?.map((doc, idx) => {
+                        const isOngoing = doc.url === 'ongoing';
+                        return (
+                          <button 
+                            key={idx}
+                            onClick={() => isOngoing ? alert('Internship is ongoing. Certificate will be unlocked upon completion.') : setSelectedDoc({url: doc.url, title: doc.title})}
+                            className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all group/btn ${
+                              isOngoing 
+                                ? 'border-border/30 bg-card/40 opacity-70 cursor-not-allowed' 
+                                : doc.type === 'certificate'
+                                  ? 'border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/50'
+                                  : 'border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/50'
+                            }`}
+                          >
+                            <div className={`w-10 h-10 rounded-lg bg-background flex items-center justify-center shrink-0 border border-border/50 transition-colors ${
+                              isOngoing ? '' : doc.type === 'certificate' ? 'group-hover/btn:border-accent/50' : 'group-hover/btn:border-primary/50'
+                            }`}>
+                              {doc.type === 'certificate' ? <Award size={16} className={isOngoing ? 'text-muted-foreground' : 'text-accent'} /> : <FileText size={16} className={isOngoing ? 'text-muted-foreground' : 'text-primary'} />}
+                            </div>
+                            <div className="text-left">
+                              <div className={`text-sm font-bold font-mono uppercase tracking-wider mb-1 ${
+                                isOngoing ? 'text-muted-foreground' : doc.type === 'certificate' ? 'text-accent' : 'text-primary'
+                              }`}>{doc.title}</div>
+                              <div className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                                {isOngoing ? 'Ongoing (Pending)' : 'Verified Document'}
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
