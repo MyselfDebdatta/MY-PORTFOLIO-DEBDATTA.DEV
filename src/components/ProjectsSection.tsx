@@ -541,7 +541,7 @@ const ProjectsSection = () => {
     const diffX = e.clientX - startX;
     const sensitivity = 0.3;
     if (carouselRef.current) {
-      carouselRef.current.style.transform = `rotateY(${dragTheta + diffX * sensitivity}deg)`;
+      carouselRef.current.style.transform = `rotateX(-15deg) rotateY(${dragTheta + diffX * sensitivity}deg)`;
     }
   };
 
@@ -603,7 +603,7 @@ const ProjectsSection = () => {
               <div
                 ref={carouselRef}
                 className="carousel-3d"
-                style={{ transform: `rotateY(${theta}deg)` }}
+                style={{ transform: `rotateX(-15deg) rotateY(${theta}deg)` }}
               >
                 {memoryCards.map((card, index) => {
                   const cardAngle = anglePerCard * index;
