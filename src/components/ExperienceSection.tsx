@@ -221,11 +221,14 @@ const ExperienceSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full"
+                  className="flex flex-col gap-4 h-full"
                 >
                   
-                  {/* Left Column Container */}
-                  <div className="col-span-1 md:col-span-5 flex flex-col gap-4">
+                  {/* Top Section: Split Layout */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    
+                    {/* Left Column Container */}
+                    <div className="col-span-1 md:col-span-5 flex flex-col gap-4">
                     {/* Bento Box 1: Role & Core Info */}
                   <div className="p-6 md:p-8 glass-panel rounded-2xl flex flex-col border border-border/50 relative overflow-hidden group h-fit">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -281,6 +284,10 @@ const ExperienceSection = () => {
                     <div className="flex flex-col gap-4 mt-6 relative z-10">
                       {activeExp.documents?.map((doc, idx) => {
                         const isOngoing = doc.url === 'ongoing';
+                        const theme = idx % 2 === 0 
+                          ? { text: 'text-primary', border: 'border-primary/20 hover:border-primary/50', bg: 'bg-primary/5 hover:bg-primary/10', iconBorder: 'border-border/50 group-hover/btn:border-primary/50' }
+                          : { text: 'text-accent', border: 'border-accent/20 hover:border-accent/50', bg: 'bg-accent/5 hover:bg-accent/10', iconBorder: 'border-border/50 group-hover/btn:border-accent/50' };
+
                         return (
                           <button 
                             key={idx}
@@ -288,19 +295,17 @@ const ExperienceSection = () => {
                             className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all group/btn ${
                               isOngoing 
                                 ? 'border-border/30 bg-card/40 opacity-70 cursor-not-allowed' 
-                                : doc.type === 'certificate'
-                                  ? 'border-accent/20 bg-accent/5 hover:bg-accent/10 hover:border-accent/50'
-                                  : 'border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/50'
+                                : `${theme.border} ${theme.bg}`
                             }`}
                           >
                             <div className={`w-10 h-10 rounded-lg bg-background flex items-center justify-center shrink-0 border border-border/50 transition-colors ${
-                              isOngoing ? '' : doc.type === 'certificate' ? 'group-hover/btn:border-accent/50' : 'group-hover/btn:border-primary/50'
+                              isOngoing ? '' : theme.iconBorder
                             }`}>
-                              {doc.type === 'certificate' ? <Award size={16} className={isOngoing ? 'text-muted-foreground' : 'text-accent'} /> : <FileText size={16} className={isOngoing ? 'text-muted-foreground' : 'text-primary'} />}
+                              {doc.type === 'certificate' ? <Award size={16} className={isOngoing ? 'text-muted-foreground' : theme.text} /> : <FileText size={16} className={isOngoing ? 'text-muted-foreground' : theme.text} />}
                             </div>
                             <div className="text-left">
                               <div className={`text-sm font-bold font-mono uppercase tracking-wider mb-1 ${
-                                isOngoing ? 'text-muted-foreground' : doc.type === 'certificate' ? 'text-accent' : 'text-primary'
+                                isOngoing ? 'text-muted-foreground' : theme.text
                               }`}>{doc.title}</div>
                               <div className="text-[10px] text-muted-foreground uppercase tracking-wider">
                                 {isOngoing ? 'Ongoing (Pending)' : 'Verified Document'}
@@ -344,9 +349,12 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                   </div>
+                  </div>
+                  </div>
                     
-                    {/* Bento Box 4: Image Gallery */}
-                  <div className="p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] flex-1 flex flex-col min-h-[300px]">
+                  {/* Bottom Section: Full Width Gallery */}
+                  {/* Bento Box 4: Image Gallery */}
+                  <div className="p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] md:h-[350px] flex-shrink-0 flex flex-col w-full mt-2">
                     
                     {/* Top Bar with Controls */}
                     <div className="flex items-center justify-between mb-4 shrink-0 z-20">
@@ -393,7 +401,6 @@ const ExperienceSection = () => {
                       ← Swipe to view more →
                     </div>
 
-                  </div>
                   </div>
 
                 </motion.div>
