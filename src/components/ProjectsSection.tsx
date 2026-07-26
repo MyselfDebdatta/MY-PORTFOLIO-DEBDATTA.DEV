@@ -488,10 +488,13 @@ const ProjectsSection = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const [theta, setTheta] = useState(0);
+  const [phi, setPhi] = useState(0); // X-axis tilt (pitch)
   const [flippedId, setFlippedId] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [startY, setStartY] = useState(0);
   const [dragTheta, setDragTheta] = useState(0);
+  const [dragPhi, setDragPhi] = useState(0);
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
   const totalCards = memoryCards.length;
@@ -533,22 +536,40 @@ const ProjectsSection = () => {
   const handlePointerDown = (e: React.PointerEvent) => {
     setIsDragging(true);
     setStartX(e.clientX);
+    setStartY(e.clientY);
     setDragTheta(theta);
+    setDragPhi(phi);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDragging) return;
     const diffX = e.clientX - startX;
+    const diffY = e.clientY - startY;
     const sensitivity = 0.3;
+    
+    // Calculate new pitch (X rotation), reversed so dragging up tilts camera down
+    let newPhi = dragPhi - (diffY * sensitivity);
+    // Clamp to prevent full flipping
+    newPhi = Math.max(-45, Math.min(45, newPhi));
+
     if (carouselRef.current) {
-      carouselRef.current.style.transform = `rotateX(-15deg) rotateY(${dragTheta + diffX * sensitivity}deg)`;
+      carouselRef.current.style.transform = `rotateX(${newPhi}deg) rotateY(${dragTheta + diffX * sensitivity}deg)`;
     }
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
     if (!isDragging) return;
     setIsDragging(false);
+    
     const diffX = e.clientX - startX;
+    const diffY = e.clientY - startY;
+    const sensitivity = 0.3;
+
+    // Save the final pitch state
+    let newPhi = dragPhi - (diffY * sensitivity);
+    newPhi = Math.max(-45, Math.min(45, newPhi));
+    setPhi(newPhi);
+
     if (Math.abs(diffX) > 30) {
       if (diffX > 0) prevCard();
       else nextCard();
@@ -603,7 +624,7 @@ const ProjectsSection = () => {
               <div
                 ref={carouselRef}
                 className="carousel-3d"
-                style={{ transform: `rotateX(-15deg) rotateY(${theta}deg)` }}
+                style={{ transform: `rotateX(${phi}deg) rotateY(${theta}deg)` }}
               >
                 {memoryCards.map((card, index) => {
                   const cardAngle = anglePerCard * index;
