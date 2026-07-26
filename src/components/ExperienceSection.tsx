@@ -268,7 +268,7 @@ const ExperienceSection = () => {
                   </div>
                     
                     {/* Bento Box 3: Official Documents */}
-                  <div className="p-6 glass-panel rounded-2xl border border-border/50 flex flex-col group relative overflow-hidden h-fit">
+                  <div className="p-6 glass-panel rounded-2xl border border-border/50 flex flex-col group relative overflow-hidden flex-1">
                     <div className="absolute -bottom-6 -right-6 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
                       <FolderLock size={120} />
                     </div>
@@ -321,7 +321,7 @@ const ExperienceSection = () => {
                   {/* Right Column Container */}
                   <div className="col-span-1 md:col-span-7 flex flex-col gap-4">
                     {/* Bento Box 2: Description & Skills */}
-                  <div className="p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between">
+                  <div className="p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between flex-1">
                     <div>
                       <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
                         <Sparkles size={12} className="text-primary" /> Key Contributions
