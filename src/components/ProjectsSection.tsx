@@ -9,6 +9,8 @@ import ishaImg from '@/assets/project-isha.jpg';
 import autobleImg from '@/assets/project-autoble.jpg';
 import udyogImg from '@/assets/project-udyog.jpg';
 import zeroMomentumImg from '@/assets/project-zeromomentum.jpg';
+import resumeAnalyzerImg from '@/assets/project-resume-analyzer.jpg';
+import argusBidImg from '@/assets/project-argus-bid.jpg';
 
 interface MemoryCard {
   id: number;
@@ -68,6 +70,102 @@ const memoryCards: MemoryCard[] = [
       ],
       gallery: [
         zeroMomentumImg,
+        portfolioImg,
+      ],
+    },
+  },
+  {
+    id: 8,
+    frontLabel: 'AI / ENTERPRISE',
+    title: 'Argus Bid AI',
+    tagline: 'Deterministic AI-driven Tender Auditing',
+    preview: 'Automated compliance and evaluation for PSU procurement.',
+    image: argusBidImg,
+    backDescription:
+      'Engineered during an internship at IOCL Haldia Refinery. A 100% deterministic AI-driven tender auditing platform. Employs a Dual-Model Hybrid RAG Augmentation (Ollama + Groq) to evaluate strict vendor compliance without hallucinations.',
+    liveUrl: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
+    coreIcon: Scale,
+    projectDetail: {
+      id: 8,
+      name: 'Argus Bid AI — Tender Audit & Compliance',
+      tagline: 'A production-grade, deterministic AI-driven tender auditing and compliance platform for PSUs.',
+      liveUrl: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
+      keyDetails: [
+        { label: 'Role', value: 'SWE Internship @ IOCL' },
+        { label: 'Status', value: 'Completed' },
+        { label: 'Platform', value: 'Enterprise Web App' },
+      ],
+      focusAreas: ['AI/ML', 'Enterprise Compliance', 'RAG Engine', 'Procurement Audit'],
+      techStack: ['Python', 'Streamlit', 'Ollama', 'Groq', 'LangChain', 'pdfplumber', 'Render'],
+      about: {
+        problem:
+          'Procurement evaluation in PSUs involves manually cross-referencing hundreds of pages of vendor submissions against strict Pre-Qualification Criteria (PQC). Black-box AI cannot be used due to hallucination risks and lack of legal defensibility.',
+        solution:
+          'Argus Bid AI transforms procurement into an instant, deterministic process. It uses a token-overlap regex engine for compliance evaluation, ensuring 100% traceability and explainability (XAI) for every decision made.',
+        goals:
+          'Automate PSU tender auditing while maintaining strict deterministic traceability, ensuring rapid and bias-free evaluations.',
+        engineering:
+          'Features a Dual-Model Hybrid RAG engine (Ollama for local secure processing, Groq 70B/8B for cloud fallback). Includes a built-in client-side PDF.js rendering engine to highlight the exact page used for compliance decisions.',
+        impact:
+          'Drastically reduced manual auditing time and eliminated human error in vendor evaluation for IOCL Haldia Refinery.',
+      },
+      team: [{ name: 'Debdatta Panda', role: 'Sole Developer & Architect' }],
+      achievements: [
+        'Engineered 100% deterministic AI rule engine',
+        'Implemented Dual-Model Hybrid RAG (Local + Cloud)',
+        'Built custom client-side PDF.js rendering engine',
+        'Developed during SWE Internship at IOCL',
+      ],
+      gallery: [
+        argusBidImg,
+        portfolioImg,
+      ],
+    },
+  },
+  {
+    id: 9,
+    frontLabel: 'AI / ATS',
+    title: 'Resume Analyzer AI',
+    tagline: 'Semantic Resume Evaluation Platform',
+    preview: 'A production-grade, AI-driven Applicant Tracking System.',
+    image: resumeAnalyzerImg,
+    backDescription:
+      'Engineered as an online assessment for Solvrex Private Limited. A highly scalable platform that applies advanced semantic matching and structural heuristics to mathematically evaluate resumes against target Job Descriptions.',
+    liveUrl: 'https://github.com/MyselfDebdatta/Resume-Analyzer-AI-Solvrex-Private-Limited-Online-Assessment-Task',
+    coreIcon: Search,
+    projectDetail: {
+      id: 9,
+      name: 'Resume Analyzer AI',
+      tagline: 'Demystifying the recruitment process with a transparent, actionable AI scorecard.',
+      liveUrl: 'https://github.com/MyselfDebdatta/Resume-Analyzer-AI-Solvrex-Private-Limited-Online-Assessment-Task',
+      keyDetails: [
+        { label: 'Client', value: 'Solvrex Pvt Ltd' },
+        { label: 'Type', value: 'Online Assessment' },
+        { label: 'Architecture', value: 'Full-Stack AI' },
+      ],
+      focusAreas: ['Applicant Tracking System', 'NLP Semantic Extraction', 'Generative AI', 'Full-Stack'],
+      techStack: ['React', 'TypeScript', 'FastAPI', 'Python', 'Groq LLaMA 3', 'PostgreSQL', 'TailwindCSS', 'Prisma'],
+      about: {
+        problem:
+          'Over 75% of resumes are discarded by legacy ATS systems relying on rigid keyword-matching. Highly qualified candidates are rejected over synonyms, and recruiters waste hours cross-referencing profiles.',
+        solution:
+          'Resume Analyzer AI uses LLMs and NLP to read resumes like a human. It generates a comprehensive, strictly deterministic JSON scorecard highlighting missing skills, evaluating section integrity, and providing actionable improvement steps.',
+        goals:
+          'Transform the opaque black-box ATS algorithm into a transparent, actionable, and visually stunning interactive scorecard.',
+        engineering:
+          'Architected with a hybrid Local-First strategy (PyTorch tensor models) pivoted to a Groq Cloud API for scalable deployment. Features spatial PDF extraction via pdfplumber and mathematically constrained LLM outputs (Pydantic schema).',
+        impact:
+          'Engineered as the primary technical submission for a SWE Internship Round 2 at Solvrex, demonstrating deep architectural pragmatism and full-stack execution.',
+      },
+      team: [{ name: 'Debdatta Panda', role: 'Sole Developer & Architect' }],
+      achievements: [
+        'Mathematically constrained AI output via Pydantic',
+        'Hybrid Local-First to Cloud deployment pivot',
+        'Semantic ATS matching algorithm (40% Keyword, 30% Context)',
+        'Full-stack architecture from React to FastAPI and PostgreSQL',
+      ],
+      gallery: [
+        resumeAnalyzerImg,
         portfolioImg,
       ],
     },
@@ -398,7 +496,21 @@ const ProjectsSection = () => {
 
   const totalCards = memoryCards.length;
   const anglePerCard = 360 / totalCards;
-  const radius = typeof window !== 'undefined' && window.innerWidth <= 768 ? 260 : 420;
+
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate dynamic radius based on polygon apothem to prevent overlapping
+  // Card width is roughly 280px on mobile and 320px on desktop
+  const cardWidth = isMobile ? 280 : 320;
+  const dynamicRadius = Math.round((cardWidth / 2) / Math.tan(Math.PI / totalCards)) + (isMobile ? 30 : 50);
+  const radius = Math.max(isMobile ? 260 : 420, dynamicRadius);
 
   const currentIndex = Math.round(Math.abs(theta / anglePerCard)) % totalCards;
 
