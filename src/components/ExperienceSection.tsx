@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { Briefcase, MapPin, Calendar, Code2, Sparkles, FolderLock, ChevronRight, LayoutGrid, Image as ImageIcon, ChevronLeft, FileText, Award, X, ExternalLink, Terminal } from 'lucide-react';
 
 const experiences = [
@@ -16,7 +17,14 @@ const experiences = [
       'Designed a Dual-Model Hybrid RAG engine leveraging Ollama for local secure processing and Groq API for rapid cloud execution.',
       'Built a custom client-side PDF.js rendering engine to natively render multi-megabyte PDFs in the browser for secure document inspection.'
     ],
-    skills: ['Python', 'Streamlit', 'Ollama', 'Groq', 'LangChain', 'ChromaDB'],
+    skills: [
+      { name: 'Python', value: 95 },
+      { name: 'Streamlit', value: 85 },
+      { name: 'Ollama', value: 75 },
+      { name: 'Groq', value: 80 },
+      { name: 'LangChain', value: 70 },
+      { name: 'ChromaDB', value: 65 }
+    ],
     link: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
     documents: [
       { title: 'Offer Letter', type: 'offer', url: '/journey/iocl/iocl_internship_offer_letter.pdf' },
@@ -50,7 +58,13 @@ const experiences = [
       'Developed an end-to-end ML workflow from data cleaning and feature vectorization to automated Markdown and PDF report generation.',
       'Utilized DuckDB for efficient data warehousing and Google Colab for rapid model prototyping and evaluation.'
     ],
-    skills: ['Python', 'Scikit-Learn', 'DuckDB', 'Pandas', 'Google Colab'],
+    skills: [
+      { name: 'Python', value: 95 },
+      { name: 'Scikit-Learn', value: 88 },
+      { name: 'DuckDB', value: 75 },
+      { name: 'Pandas', value: 90 },
+      { name: 'Colab', value: 80 }
+    ],
     link: 'https://github.com/MyselfDebdatta/FlyRank-ML-INTERNSHIP-STARTER',
     documents: [
       { title: 'Gmail Confirmation', type: 'offer', url: '/journey/flyrank/flyrank_gmail_confirmation.pdf' },
@@ -134,6 +148,7 @@ const DocumentModal = ({ url, title, onClose }: { url: string, title: string, on
 const ExperienceSection = () => {
   const [activeId, setActiveId] = useState<number>(experiences[0].id);
   const [isHackerMode, setIsHackerMode] = useState<boolean>(false);
+  const [skillView, setSkillView] = useState<'badges' | 'radar'>('badges');
   const [selectedDoc, setSelectedDoc] = useState<{url: string, title: string} | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -384,16 +399,77 @@ const ExperienceSection = () => {
                     </div>
 
                     <div className="mt-8 pt-6 border-t border-border/30">
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
-                        <Code2 size={12} className="text-primary" /> Tech Stack
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {activeExp.skills.map((skill) => (
-                          <span key={skill} className="px-2.5 py-1 rounded text-xs font-mono tracking-wider border border-primary/20 text-primary/90 bg-primary/5">
-                            {skill}
-                          </span>
-                        ))}
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+                          <Code2 size={12} className="text-primary" /> Tech Stack Intensity
+                        </h4>
+                        
+                        {/* View Toggle */}
+                        <div className="flex items-center bg-background/50 rounded-lg p-0.5 border border-border/50">
+                          <button
+                            onClick={() => setSkillView('badges')}
+                            className={`px-3 py-1 text-[10px] font-mono uppercase rounded-md transition-colors ${
+                              skillView === 'badges' ? 'bg-primary/20 text-primary' : 'text-muted-foreground hover:text-foreground'
+                            }`}
+                          >
+                            Badges
+                          </button>
+                          <button
+                            onClick={() => setSkillView('radar')}
+                            className={`px-3 py-1 text-[10px] font-mono uppercase rounded-md transition-colors ${
+                              skillView === 'radar' ? 'bg-primary/20 text-primary' : 'text-muted-foreground hover:text-foreground'
+                            }`}
+                          >
+                            Radar
+                          </button>
+                        </div>
                       </div>
+
+                      <AnimatePresence mode="wait">
+                        {skillView === 'badges' ? (
+                          <motion.div
+                            key="badges"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex flex-wrap gap-2"
+                          >
+                            {activeExp.skills.map((skill) => (
+                              <span key={skill.name} className="px-2.5 py-1 rounded text-xs font-mono tracking-wider border border-primary/20 text-primary/90 bg-primary/5">
+                                {skill.name}
+                              </span>
+                            ))}
+                          </motion.div>
+                        ) : (
+                          <motion.div
+                            key="radar"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.3 }}
+                            className="h-[200px] w-full"
+                          >
+                            <ResponsiveContainer width="100%" height="100%">
+                              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={activeExp.skills}>
+                                <PolarGrid stroke="hsl(var(--border))" strokeOpacity={0.5} />
+                                <PolarAngleAxis dataKey="name" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 10, fontFamily: 'monospace' }} />
+                                <Tooltip
+                                  contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '8px', fontSize: '12px', fontFamily: 'monospace' }}
+                                  itemStyle={{ color: 'hsl(var(--primary))' }}
+                                />
+                                <Radar
+                                  name="Intensity"
+                                  dataKey="value"
+                                  stroke={activeExp.status === 'Ongoing' ? 'hsl(var(--accent))' : 'hsl(var(--primary))'}
+                                  fill={activeExp.status === 'Ongoing' ? 'hsl(var(--accent))' : 'hsl(var(--primary))'}
+                                  fillOpacity={0.2}
+                                />
+                              </RadarChart>
+                            </ResponsiveContainer>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
                     
@@ -482,7 +558,7 @@ const ExperienceSection = () => {
                         {'  '}<span className="text-accent">"timeline"</span>: <span className="text-green-400">"{activeExp.date}"</span>,{'\n'}
                         {'  '}<span className="text-accent">"tech_stack"</span>: [{'\n'}
                         {activeExp.skills.map((s, i) => (
-                          <span key={i}>{'    '}<span className="text-green-400">"{s}"</span>{i < activeExp.skills.length - 1 ? ',' : ''}{'\n'}</span>
+                          <span key={i}>{'    '}<span className="text-green-400">"{s.name}"</span>: <span className="text-yellow-300">{s.value}</span>{i < activeExp.skills.length - 1 ? ',' : ''}{'\n'}</span>
                         ))}
                         {'  '}],{'\n'}
                         {'  '}<span className="text-accent">"contributions"</span>: [{'\n'}
