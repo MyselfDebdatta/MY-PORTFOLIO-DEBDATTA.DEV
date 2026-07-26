@@ -60,8 +60,11 @@ const experiences = [
       { title: 'Completion Certificate', type: 'certificate', url: 'ongoing' }
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
+      '/journey/flyrank/gallery_1.jpg',
+      '/journey/flyrank/gallery_2.png',
+      '/journey/flyrank/gallery_3.png',
+      '/journey/flyrank/gallery_4.png',
+      '/journey/flyrank/gallery_5.png',
     ]
   }
 ];
