@@ -568,7 +568,7 @@ const ProjectsSection = () => {
     <>
       <section id="projects" ref={ref} className="py-32 relative">
         <div className="container mx-auto px-6 overflow-visible">
-          <style>{`#projects .carousel-3d-container { margin: 80px 0; }`}</style>
+          <style>{`#projects .carousel-3d-container { margin: 120px 0; }`}</style>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
