@@ -37,17 +37,19 @@ const experiences = [
   },
   {
     id: 2,
-    title: 'Frontend Developer Intern',
-    company: 'Creative Web Studio',
-    location: 'Bhubaneswar, India',
-    date: 'May 2023 - Aug 2023',
-    status: 'Completed',
+    title: 'Machine Learning Intern',
+    company: 'FlyRank.ai',
+    location: 'Remote',
+    date: 'July 1, 2026 - Nov 18, 2026',
+    status: 'Ongoing',
     description: [
-      'Developed responsive, pixel-perfect user interfaces using React and Tailwind CSS.',
-      'Collaborated closely with UI/UX designers to translate Figma prototypes into functional web apps.',
-      'Built a custom 3D product visualizer using Three.js that increased user engagement by 25%.'
+      'Engineered an Applied Search Intelligence pipeline to analyze Google Search Ranking & Discoverability using ~79M rows of anonymized data.',
+      'Trained and evaluated Logistic Regression, Decision Tree, and Random Forest models to outperform baseline hand-rules for page review recommendations.',
+      'Developed an end-to-end ML workflow from data cleaning and feature vectorization to automated Markdown and PDF report generation.',
+      'Utilized DuckDB for efficient data warehousing and Google Colab for rapid model prototyping and evaluation.'
     ],
-    skills: ['React', 'Tailwind', 'Three.js', 'Figma', 'Vite'],
+    skills: ['Python', 'Scikit-Learn', 'DuckDB', 'Pandas', 'Google Colab'],
+    link: 'https://github.com/MyselfDebdatta/FlyRank-ML-INTERNSHIP-STARTER',
     offerLetterUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
     certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
     gallery: [
