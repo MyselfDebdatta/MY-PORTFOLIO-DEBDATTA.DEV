@@ -103,15 +103,25 @@ const DocumentModal = ({ url, title, onClose }: { url: string, title: string, on
           </button>
         </div>
         
-        {/* PDF Viewer */}
-        <div className="flex-1 w-full bg-black/40 p-2 md:p-4">
-          {/* Note: In production, consider using react-pdf or similar for robust PDF rendering. 
-              Iframe works for most modern browsers for standard PDFs. */}
-          <iframe 
-            src={url.includes('#') ? `${url}&toolbar=0&navpanes=0&scrollbar=0` : `${url}#toolbar=0&navpanes=0&scrollbar=0`}
-            className="w-full h-full rounded-xl bg-white shadow-inner"
-            title="Official Document"
-          />
+        {/* PDF Viewer or Pending Message */}
+        <div className="flex-1 w-full bg-black/40 p-2 md:p-4 flex items-center justify-center">
+          {url === 'ongoing' ? (
+            <div className="flex flex-col items-center justify-center text-center p-8 max-w-md mx-auto">
+              <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6">
+                <FolderLock size={40} className="text-accent" />
+              </div>
+              <h3 className="text-2xl font-display font-bold text-foreground mb-4">Verification Pending</h3>
+              <p className="text-muted-foreground font-heading text-sm leading-relaxed">
+                This internship is currently ongoing. The official completion certificate will be automatically unlocked and verified securely upon successful completion.
+              </p>
+            </div>
+          ) : (
+            <iframe 
+              src={url.includes('#') ? `${url}&toolbar=0&navpanes=0&scrollbar=0` : `${url}#toolbar=0&navpanes=0&scrollbar=0`}
+              className="w-full h-full rounded-xl bg-white shadow-inner"
+              title="Official Document"
+            />
+          )}
         </div>
       </motion.div>
     </motion.div>
@@ -288,7 +298,7 @@ const ExperienceSection = () => {
                         return (
                           <button 
                             key={idx}
-                            onClick={() => isOngoing ? alert('Internship is ongoing. Certificate will be unlocked upon completion.') : setSelectedDoc({url: doc.url, title: doc.title})}
+                            onClick={() => setSelectedDoc({url: doc.url, title: doc.title})}
                             className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all group/btn ${
                               isOngoing 
                                 ? 'border-border/30 bg-card/40 opacity-70 cursor-not-allowed' 
