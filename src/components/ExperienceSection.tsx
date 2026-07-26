@@ -229,7 +229,7 @@ const ExperienceSection = () => {
                       {activeExp.title}
                     </h3>
                     
-                    <div className="mt-auto space-y-3">
+                    <div className="mt-8 space-y-3">
                       <div className="flex items-center gap-3 text-sm font-heading text-primary/90">
                         <Briefcase size={16} className="shrink-0" /> 
                         <div className="flex-1">
@@ -284,7 +284,7 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Bento Box 3: Official Documents */}
-                  <div className="col-span-1 md:col-span-5 p-6 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between group relative overflow-hidden h-full">
+                  <div className="col-span-1 md:col-span-5 p-6 glass-panel rounded-2xl border border-border/50 flex flex-col group relative overflow-hidden h-full">
                     <div className="absolute -bottom-6 -right-6 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
                       <FolderLock size={120} />
                     </div>
@@ -297,7 +297,7 @@ const ExperienceSection = () => {
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-4 mt-auto relative z-10">
+                    <div className="flex flex-col gap-4 mt-6 relative z-10">
                       <button 
                         onClick={() => setSelectedDoc({url: activeExp.offerLetterUrl, title: 'Offer Letter'})}
                         className="w-full flex items-center gap-4 p-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/50 transition-all group/btn"
