@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, MapPin, Calendar, Code2, Sparkles, FolderLock, ChevronRight, LayoutGrid, Image as ImageIcon, ChevronLeft, FileText, Award, X, ExternalLink } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, Code2, Sparkles, FolderLock, ChevronRight, LayoutGrid, Image as ImageIcon, ChevronLeft, FileText, Award, X, ExternalLink, Terminal } from 'lucide-react';
 
 const experiences = [
   {
@@ -133,6 +133,7 @@ const DocumentModal = ({ url, title, onClose }: { url: string, title: string, on
 
 const ExperienceSection = () => {
   const [activeId, setActiveId] = useState<number>(experiences[0].id);
+  const [isHackerMode, setIsHackerMode] = useState<boolean>(false);
   const [selectedDoc, setSelectedDoc] = useState<{url: string, title: string} | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -165,77 +166,113 @@ const ExperienceSection = () => {
       <section id="experience" className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 md:mb-20 text-center md:text-left w-full"
-          >
-            <span className="neon-button !px-5 !py-1.5 text-xs flex items-center justify-center md:justify-start gap-2 w-fit mx-auto md:mx-0 mb-3">
-              <span className="text-primary"><LayoutGrid size={14} /></span> COMMAND CENTER
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-              Experience <span className="neon-text">Logs.</span>
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-lg font-heading mx-auto md:mx-0">
-              A secure terminal dashboard detailing my professional internships and engineering roles.
-            </p>
-          </motion.div>
+          {/* Section Header & Controls */}
+          <div className="mb-16 md:mb-20 flex flex-col md:flex-row items-center md:items-start justify-between gap-6 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center md:text-left"
+            >
+              <span className="neon-button !px-5 !py-1.5 text-xs flex items-center justify-center md:justify-start gap-2 w-fit mx-auto md:mx-0 mb-3">
+                <span className="text-primary"><LayoutGrid size={14} /></span> COMMAND CENTER
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
+                Experience <span className="neon-text">Logs.</span>
+              </h2>
+              <p className="text-muted-foreground mt-4 max-w-lg font-heading mx-auto md:mx-0">
+                A secure terminal dashboard detailing my professional internships and engineering roles.
+              </p>
+            </motion.div>
+
+            {/* Hacker Mode Toggle */}
+            <motion.button 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              onClick={() => setIsHackerMode(!isHackerMode)}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all duration-300 shadow-lg ${
+                isHackerMode 
+                  ? 'border-primary/50 bg-primary/10 shadow-[0_0_15px_rgba(0,255,65,0.2)]' 
+                  : 'border-border/50 bg-card/50 hover:bg-card/80 hover:border-primary/30'
+              }`}
+            >
+              <Terminal size={18} className={isHackerMode ? 'text-primary' : 'text-muted-foreground'} />
+              <span className={`text-[10px] font-mono tracking-widest uppercase font-bold ${isHackerMode ? 'text-primary' : 'text-foreground'}`}>
+                [ Hacker Mode ]
+              </span>
+            </motion.button>
+          </div>
 
           {/* Dashboard Layout */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-[1200px] mx-auto">
             
-            {/* Sidebar Tabs */}
-            <div className="w-full lg:w-1/4 flex flex-row lg:flex-col gap-3 overflow-x-auto pb-4 lg:pb-0 scrollbar-hide">
+            {/* Sidebar Timeline Tabs */}
+            <div className="w-full lg:w-1/4 relative flex flex-row lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide lg:pl-8">
+              {/* Vertical Laser Line (Desktop only) */}
+              <div className="hidden lg:block absolute left-2 top-8 bottom-8 w-[2px] bg-border/30 rounded-full overflow-hidden">
+                <motion.div 
+                  className="w-full bg-gradient-to-b from-transparent via-primary to-transparent h-32"
+                  animate={{ y: ['-100%', '400%'] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
+                />
+              </div>
+
               {experiences.map((exp) => {
                 const isActive = activeId === exp.id;
                 const isOngoing = exp.status === 'Ongoing';
+                const nodeColor = isActive ? (isOngoing ? 'bg-accent shadow-[0_0_12px_rgba(216,180,254,0.8)]' : 'bg-primary shadow-[0_0_12px_rgba(0,255,65,0.8)]') : 'bg-border/50 group-hover:bg-primary/50';
                 
                 return (
                   <button
                     key={exp.id}
                     onClick={() => setActiveId(exp.id)}
-                    className={`flex items-center justify-between p-4 rounded-xl border text-left transition-all duration-300 min-w-[240px] lg:min-w-0 ${
+                    className={`relative flex items-center justify-between p-4 rounded-xl border text-left transition-all duration-300 min-w-[240px] lg:min-w-0 group ${
                       isActive 
-                        ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(0,255,65,0.15)]' 
-                        : 'border-border/50 bg-card/40 hover:border-primary/50 hover:bg-card/80'
+                        ? isOngoing ? 'border-accent/50 bg-accent/10' : 'border-primary/50 bg-primary/10' 
+                        : 'border-border/50 bg-card/40 hover:border-primary/30 hover:bg-card/80'
                     }`}
                   >
+                    {/* Timeline Node (Desktop) */}
+                    <div className="hidden lg:flex absolute -left-[29px] items-center justify-center w-3 h-3 z-10 rounded-full transition-all duration-500 bg-background border-2 border-background ring-1 ring-border/50">
+                      <div className={`w-full h-full rounded-full transition-all duration-500 ${nodeColor}`} />
+                    </div>
+                    
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         {isOngoing && isActive && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping absolute" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping absolute lg:hidden" />
                         )}
                         {isOngoing && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent relative z-10" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent relative z-10 lg:hidden" />
                         )}
-                        <span className={`text-[10px] font-mono tracking-widest uppercase ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
+                        <span className={`text-[10px] font-mono tracking-widest uppercase transition-colors ${isActive ? (isOngoing ? 'text-accent' : 'text-primary') : 'text-muted-foreground'}`}>
                           {exp.date}
                         </span>
                       </div>
-                      <h4 className={`font-display font-bold text-sm line-clamp-1 ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <h4 className={`font-display font-bold text-sm line-clamp-1 transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground/90'}`}>
                         {exp.company}
                       </h4>
                     </div>
-                    {isActive && <ChevronRight size={16} className="text-primary hidden lg:block" />}
+                    {isActive && <ChevronRight size={16} className={`hidden lg:block ${isOngoing ? 'text-accent' : 'text-primary'}`} />}
                   </button>
                 );
               })}
             </div>
 
-            {/* Main Display: Bento Grid */}
-            <div className="flex-1 relative min-h-[500px]">
+            {/* Main Display Area */}
+            <div className="flex-1 relative min-h-[500px] perspective-[1000px]">
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeId}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full"
-                >
+                {!isHackerMode ? (
+                  <motion.div
+                    key={`grid-${activeId}`}
+                    initial={{ opacity: 0, rotateY: 90 }}
+                    animate={{ opacity: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, rotateY: -90 }}
+                    transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full origin-center"
+                  >
                   
                   {/* Left Column Container */}
                     <div className="col-span-1 md:col-span-5 flex flex-col gap-4">
@@ -413,6 +450,56 @@ const ExperienceSection = () => {
                   </div>
 
                 </motion.div>
+                ) : (
+                  <motion.div
+                    key={`terminal-${activeId}`}
+                    initial={{ opacity: 0, rotateY: -90 }}
+                    animate={{ opacity: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, rotateY: 90 }}
+                    transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
+                    className="w-full h-full glass-panel rounded-2xl border border-border/50 overflow-hidden flex flex-col origin-center min-h-[500px]"
+                  >
+                    {/* Terminal Window Header */}
+                    <div className="px-4 py-3 border-b border-border/30 bg-black/40 flex items-center justify-between shrink-0">
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                        <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                      </div>
+                      <div className="text-[10px] font-mono text-muted-foreground">
+                        {activeExp.id}_DATA.json - node
+                      </div>
+                      <div className="w-10"></div>
+                    </div>
+                    {/* Terminal Window Content */}
+                    <div className="p-6 md:p-8 bg-black/80 flex-1 overflow-y-auto font-mono text-xs md:text-sm leading-relaxed scrollbar-hide text-left">
+                      <pre className="text-foreground/80 whitespace-pre-wrap break-words">
+                        <span className="text-primary">const</span> <span className="text-blue-400">experienceData</span> = {'{\n'}
+                        {'  '}<span className="text-accent">"id"</span>: <span className="text-yellow-300">{activeExp.id}</span>,{'\n'}
+                        {'  '}<span className="text-accent">"role"</span>: <span className="text-green-400">"{activeExp.title}"</span>,{'\n'}
+                        {'  '}<span className="text-accent">"company"</span>: <span className="text-green-400">"{activeExp.company}"</span>,{'\n'}
+                        {'  '}<span className="text-accent">"status"</span>: <span className="text-green-400">"{activeExp.status}"</span>,{'\n'}
+                        {'  '}<span className="text-accent">"timeline"</span>: <span className="text-green-400">"{activeExp.date}"</span>,{'\n'}
+                        {'  '}<span className="text-accent">"tech_stack"</span>: [{'\n'}
+                        {activeExp.skills.map((s, i) => (
+                          <span key={i}>{'    '}<span className="text-green-400">"{s}"</span>{i < activeExp.skills.length - 1 ? ',' : ''}{'\n'}</span>
+                        ))}
+                        {'  '}],{'\n'}
+                        {'  '}<span className="text-accent">"contributions"</span>: [{'\n'}
+                        {activeExp.description.map((d, i) => (
+                          <span key={i}>{'    '}<span className="text-green-400">"{d}"</span>{i < activeExp.description.length - 1 ? ',' : ''}{'\n'}</span>
+                        ))}
+                        {'  '}],{'\n'}
+                        {'  '}<span className="text-accent">"verified_documents"</span>: <span className="text-yellow-300">{activeExp.documents.length}</span>,{'\n'}
+                        {'  '}<span className="text-accent">"gallery_assets"</span>: <span className="text-yellow-300">{activeExp.gallery.length}</span>{'\n'}
+                        {'}'};
+                      </pre>
+                      <div className="mt-8 flex items-center gap-2 text-muted-foreground animate-pulse">
+                        <span className="text-primary">➜</span> <span>_</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </div>
 
