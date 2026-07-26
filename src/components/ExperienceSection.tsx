@@ -224,8 +224,10 @@ const ExperienceSection = () => {
                   className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full"
                 >
                   
-                  {/* Bento Box 1: Role & Core Info */}
-                  <div className="col-span-1 md:col-span-5 p-6 md:p-8 glass-panel rounded-2xl flex flex-col border border-border/50 relative overflow-hidden group h-fit">
+                  {/* Left Column Container */}
+                  <div className="col-span-1 md:col-span-5 flex flex-col gap-4">
+                    {/* Bento Box 1: Role & Core Info */}
+                  <div className="p-6 md:p-8 glass-panel rounded-2xl flex flex-col border border-border/50 relative overflow-hidden group h-fit">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                       <FolderLock size={64} />
                     </div>
@@ -261,39 +263,9 @@ const ExperienceSection = () => {
                       )}
                     </div>
                   </div>
-
-                  {/* Bento Box 2: Description & Skills */}
-                  <div className="col-span-1 md:col-span-7 p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between">
-                    <div>
-                      <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
-                        <Sparkles size={12} className="text-primary" /> Key Contributions
-                      </h4>
-                      <ul className="space-y-4">
-                        {activeExp.description.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 text-[13px] text-foreground/75 font-heading leading-relaxed">
-                            <span className="mt-1.5 text-primary shrink-0">▹</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-8 pt-6 border-t border-border/30">
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
-                        <Code2 size={12} className="text-primary" /> Tech Stack
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {activeExp.skills.map((skill) => (
-                          <span key={skill} className="px-2.5 py-1 rounded text-xs font-mono tracking-wider border border-primary/20 text-primary/90 bg-primary/5">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bento Box 3: Official Documents */}
-                  <div className="col-span-1 md:col-span-5 p-6 glass-panel rounded-2xl border border-border/50 flex flex-col group relative overflow-hidden h-fit">
+                    
+                    {/* Bento Box 3: Official Documents */}
+                  <div className="p-6 glass-panel rounded-2xl border border-border/50 flex flex-col group relative overflow-hidden h-fit">
                     <div className="absolute -bottom-6 -right-6 p-4 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
                       <FolderLock size={120} />
                     </div>
@@ -339,9 +311,42 @@ const ExperienceSection = () => {
                       })}
                     </div>
                   </div>
+                  </div>
 
-                  {/* Bento Box 4: Image Gallery */}
-                  <div className="col-span-1 md:col-span-7 p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] md:h-full flex flex-col min-h-[300px]">
+                  {/* Right Column Container */}
+                  <div className="col-span-1 md:col-span-7 flex flex-col gap-4">
+                    {/* Bento Box 2: Description & Skills */}
+                  <div className="p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
+                        <Sparkles size={12} className="text-primary" /> Key Contributions
+                      </h4>
+                      <ul className="space-y-4">
+                        {activeExp.description.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-[13px] text-foreground/75 font-heading leading-relaxed">
+                            <span className="mt-1.5 text-primary shrink-0">▹</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-border/30">
+                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
+                        <Code2 size={12} className="text-primary" /> Tech Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {activeExp.skills.map((skill) => (
+                          <span key={skill} className="px-2.5 py-1 rounded text-xs font-mono tracking-wider border border-primary/20 text-primary/90 bg-primary/5">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                    
+                    {/* Bento Box 4: Image Gallery */}
+                  <div className="p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] flex-1 flex flex-col min-h-[300px]">
                     
                     {/* Top Bar with Controls */}
                     <div className="flex items-center justify-between mb-4 shrink-0 z-20">
@@ -388,6 +393,7 @@ const ExperienceSection = () => {
                       ← Swipe to view more →
                     </div>
 
+                  </div>
                   </div>
 
                 </motion.div>
