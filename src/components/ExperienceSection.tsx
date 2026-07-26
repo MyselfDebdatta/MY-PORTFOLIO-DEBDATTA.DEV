@@ -221,13 +221,10 @@ const ExperienceSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="flex flex-col gap-4 h-full"
+                  className="grid grid-cols-1 md:grid-cols-12 gap-4 h-full"
                 >
                   
-                  {/* Top Section: Split Layout */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                    
-                    {/* Left Column Container */}
+                  {/* Left Column Container */}
                     <div className="col-span-1 md:col-span-5 flex flex-col gap-4">
                     {/* Bento Box 1: Role & Core Info */}
                   <div className="p-6 md:p-8 glass-panel rounded-2xl flex flex-col border border-border/50 relative overflow-hidden group h-fit">
@@ -321,7 +318,7 @@ const ExperienceSection = () => {
                   {/* Right Column Container */}
                   <div className="col-span-1 md:col-span-7 flex flex-col gap-4">
                     {/* Bento Box 2: Description & Skills */}
-                  <div className="p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col justify-between flex-1">
+                  <div className="p-6 md:p-8 glass-panel rounded-2xl border border-border/50 flex flex-col h-fit">
                     <div>
                       <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4 flex items-center gap-2">
                         <Sparkles size={12} className="text-primary" /> Key Contributions
@@ -349,12 +346,10 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                   </div>
-                  </div>
-                  </div>
                     
                   {/* Bottom Section: Full Width Gallery */}
                   {/* Bento Box 4: Image Gallery */}
-                  <div className="p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] md:h-[350px] flex-shrink-0 flex flex-col w-full mt-2">
+                  <div className="p-4 glass-panel rounded-2xl border border-border/50 relative overflow-hidden h-[280px] flex-1 flex flex-col min-h-[300px]">
                     
                     {/* Top Bar with Controls */}
                     <div className="flex items-center justify-between mb-4 shrink-0 z-20">
@@ -401,6 +396,7 @@ const ExperienceSection = () => {
                       ← Swipe to view more →
                     </div>
 
+                  </div>
                   </div>
 
                 </motion.div>
