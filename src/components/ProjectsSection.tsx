@@ -83,13 +83,13 @@ const memoryCards: MemoryCard[] = [
     image: argusBidImg,
     backDescription:
       'Engineered during an internship at IOCL Haldia Refinery. A 100% deterministic AI-driven tender auditing platform. Employs a Dual-Model Hybrid RAG Augmentation (Ollama + Groq) to evaluate strict vendor compliance without hallucinations.',
-    liveUrl: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
+    liveUrl: 'https://argus-bid-ai.onrender.com/',
     coreIcon: Scale,
     projectDetail: {
       id: 8,
       name: 'Argus Bid AI — Tender Audit & Compliance',
       tagline: 'A production-grade, deterministic AI-driven tender auditing and compliance platform for PSUs.',
-      liveUrl: 'https://github.com/MyselfDebdatta/Argus-Bid-AI-Tender-Audit-Compliance-SWE-Internship-IOCL-Haldia-2026',
+      liveUrl: 'https://argus-bid-ai.onrender.com/',
       keyDetails: [
         { label: 'Role', value: 'SWE Internship @ IOCL' },
         { label: 'Status', value: 'Completed' },
@@ -131,13 +131,13 @@ const memoryCards: MemoryCard[] = [
     image: resumeAnalyzerImg,
     backDescription:
       'Engineered as an online assessment for Solvrex Private Limited. A highly scalable platform that applies advanced semantic matching and structural heuristics to mathematically evaluate resumes against target Job Descriptions.',
-    liveUrl: 'https://github.com/MyselfDebdatta/Resume-Analyzer-AI-Solvrex-Private-Limited-Online-Assessment-Task',
+    liveUrl: 'https://resume-analyzer-ai-debdatta.vercel.app/',
     coreIcon: Search,
     projectDetail: {
       id: 9,
       name: 'Resume Analyzer AI',
       tagline: 'Demystifying the recruitment process with a transparent, actionable AI scorecard.',
-      liveUrl: 'https://github.com/MyselfDebdatta/Resume-Analyzer-AI-Solvrex-Private-Limited-Online-Assessment-Task',
+      liveUrl: 'https://resume-analyzer-ai-debdatta.vercel.app/',
       keyDetails: [
         { label: 'Client', value: 'Solvrex Pvt Ltd' },
         { label: 'Type', value: 'Online Assessment' },
@@ -568,7 +568,7 @@ const ProjectsSection = () => {
     <>
       <section id="projects" ref={ref} className="py-32 relative">
         <div className="container mx-auto px-6 overflow-visible">
-          <style>{`#projects .carousel-3d-container { padding: 60px 0; }`}</style>
+          <style>{`#projects .carousel-3d-container { margin: 80px 0; }`}</style>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
