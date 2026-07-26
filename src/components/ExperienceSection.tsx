@@ -21,9 +21,18 @@ const experiences = [
     offerLetterUrl: '/iocl_internship_offer_letter.pdf',
     certificateUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with real URL later
     gallery: [
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=800'
+      '/journey/iocl/1.jpeg',
+      '/journey/iocl/2.jpeg',
+      '/journey/iocl/3.jpeg',
+      '/journey/iocl/4.jpeg',
+      '/journey/iocl/5.jpeg',
+      '/journey/iocl/6.jpeg',
+      '/journey/iocl/7.jpeg',
+      '/journey/iocl/8.jpeg',
+      '/journey/iocl/9.jpeg',
+      '/journey/iocl/10.jpeg',
+      '/journey/iocl/11.jpeg',
+      '/journey/iocl/12.jpeg'
     ]
   },
   {
