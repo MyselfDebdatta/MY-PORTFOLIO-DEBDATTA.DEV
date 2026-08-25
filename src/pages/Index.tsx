@@ -11,7 +11,7 @@ import ProjectsSection from '@/components/ProjectsSection';
 import AchievementsWall from '@/components/AchievementsWall';
 import ConnectSection from '@/components/ConnectSection';
 import Footer from '@/components/Footer';
-import AnimatedBackground from '@/components/AnimatedBackground';
+import { CanvasBackground } from '@/components/CanvasBackground';
 import CommandPalette from '@/components/CommandPalette';
 
 const Index = () => {
@@ -38,7 +38,7 @@ const Index = () => {
 
       {introComplete && (
         <>
-          <AnimatedBackground />
+          <CanvasBackground />
           <div className="relative" style={{ zIndex: 10 }}>
             <Navbar />
             <HeroSection />
