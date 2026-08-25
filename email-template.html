@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Connecting</title>
+  <style>
+    /* Reset and Base Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #030406;
+      color: #d1d5db;
+      -webkit-font-smoothing: antialiased;
+    }
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td {
+      padding: 0;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #030406;
+      background-image: radial-gradient(circle at top, #0a1128 0%, #030406 100%);
+      padding: 50px 0 80px;
+    }
+    .main {
+      background-color: #0b0f19;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      border-spacing: 0;
+      color: #d1d5db;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+    .top-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #00f0ff, #3b82f6);
+      width: 100%;
+    }
+    .header {
+      padding: 40px 40px 20px;
+    }
+    .header-table {
+      width: 100%;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      font-weight: 800;
+    }
+    .header h1 span {
+      color: #00f0ff;
+    }
+    .header p {
+      margin: 6px 0 0;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .profile-container {
+      text-align: right;
+      width: 120px;
+    }
+    .profile-img-wrapper {
+      display: inline-block;
+      padding: 3px;
+      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+    .profile-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 3px solid #0b0f19;
+      display: block;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+    .title {
+      padding: 10px 40px 25px;
+      text-align: left;
+    }
+    .title h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #00f0ff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .content {
+      padding: 0 40px 40px;
+      background-color: #0b0f19;
+      border-radius: 12px;
+    }
+    .content p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin: 0 0 16px;
+    }
+    .greeting {
+      font-size: 17px !important;
+      color: #ffffff !important;
+      font-weight: 600;
+      padding-top: 5px;
+    }
+    .highlight-box {
+      background-color: #0f172a;
+      border-left: 4px solid #00f0ff;
+      border-radius: 6px;
+      padding: 24px;
+      margin: 30px 0;
+      border-right: 1px solid #1e293b;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
+    }
+    .highlight-box h4 {
+      margin: 0 0 12px;
+      color: #f8fafc;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .message-content {
+      margin-top: 16px !important;
+      padding-top: 16px;
+      border-top: 1px dashed #334155;
+      font-style: italic;
+      color: #e2e8f0 !important;
+      font-size: 15px !important;
+    }
+    .action-container {
+      text-align: center;
+      margin: 45px 0 15px;
+    }
+    .button {
+      background-color: #0A66C2;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-block;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    .footer {
+      padding: 35px 40px;
+      background-color: #070a12;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+    }
+    .social-links {
+      padding-bottom: 25px;
+    }
+    .social-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 16px;
+      letter-spacing: 0.5px;
+    }
+    .social-divider {
+      color: #334155;
+    }
+    .disclaimer {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <table class="main">
+      <tr>
+        <td>
+          <div class="top-bar"></div>
+          
+          <!-- Header with 2 columns -->
+          <div class="header">
+            <table class="header-table" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="text-align: left; vertical-align: middle;">
+                  <h1>Debdatta <span>Panda</span></h1>
+                  <p style="color: #cbd5e1;">Full Stack & AI/ML Developer</p>
+                  <p>Cloud & DevOps Practitioner</p>
+                </td>
+                <td class="profile-container" style="vertical-align: middle;">
+                  <!-- Larger profile photo with gradient ring & face positioning -->
+                  <div class="profile-img-wrapper" style="display: inline-block; padding: 3px; background: linear-gradient(135deg, #00f0ff, #3b82f6); border-radius: 50%; box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);">
+                    <img src="https://raw.githubusercontent.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/main/src/assets/profile.jpg" alt="Debdatta Panda" class="profile-img" style="width: 96px; height: 96px; border-radius: 50%; border: 3px solid #0b0f19; display: block; object-fit: cover; object-position: center 15%;">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Title -->
+          <div class="title">
+            <h2>Thank You for Reaching Out!</h2>
+          </div>
+
+          <!-- Content Box -->
+          <div class="content">
+            <p class="greeting">Hi {{name}},</p>
+            <p>Greetings from Debdatta Panda.</p>
+            <p>Thank you for taking the time to explore my portfolio. I have successfully received your inquiry and I truly appreciate your interest. I will review your message and get back to you shortly.</p>
+            
+            <!-- Highlighted Box -->
+            <div class="highlight-box">
+              <h4>
+                <span style="font-size: 18px; margin-right: 6px;">📄</span> Message Details
+              </h4>
+              <p>Below is a copy of the message you submitted. If you need to append any additional context, simply reply directly to this email.</p>
+              
+              <!-- Using EmailJS variable for message -->
+              <p class="message-content">"{{message}}"</p>
+            </div>
+
+            <p>I am always excited to discuss innovative ideas, explore new opportunities, or just talk tech. Looking forward to our conversation!</p>
+
+            <!-- Action Button -->
+            <div class="action-container">
+              <a href="https://www.linkedin.com/in/myself-debdatta-194a822b1" class="button">Connect on LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="footer">
+            <div class="social-links">
+              <!-- Replaced LinkedIn with GitHub as requested -->
+              <a href="https://github.com/MyselfDebdatta" style="color: #ffffff;">GitHub</a> 
+              <span class="social-divider">|</span> 
+              <a href="https://wa.me/918637377080" style="color: #25D366;">WhatsApp</a> 
+              <span class="social-divider">|</span> 
+              <a href="https://www.instagram.com/itz__debdatta?igsh=MXRydjliNmdycDFrdg==" style="color: #E1306C;">Instagram</a>
+            </div>
+            
+            <p class="disclaimer">You are receiving this automated email because you submitted a contact form on Debdatta Panda's portfolio website. To contact me directly, reply to this email.</p>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
