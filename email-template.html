@@ -27,7 +27,7 @@
       table-layout: fixed;
       background-color: #030406;
       background-image: radial-gradient(circle at top, #0a1128 0%, #030406 100%);
-      padding: 50px 0 80px;
+      padding: 40px 0 60px;
     }
     .main {
       background-color: #0b0f19;
@@ -47,14 +47,14 @@
       width: 100%;
     }
     .header {
-      padding: 40px 40px 20px;
+      padding: 35px 35px 20px;
     }
     .header-table {
       width: 100%;
     }
     .header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 26px;
       color: #ffffff;
       letter-spacing: -0.5px;
       font-weight: 800;
@@ -64,15 +64,15 @@
     }
     .header p {
       margin: 6px 0 0;
-      font-size: 11.5px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       color: #94a3b8;
       font-weight: 600;
     }
     .profile-container {
       text-align: right;
-      width: 120px;
+      width: 100px;
     }
     .profile-img-wrapper {
       display: inline-block;
@@ -82,8 +82,8 @@
       box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
     }
     .profile-img {
-      width: 96px;
-      height: 96px;
+      width: 85px;
+      height: 85px;
       border-radius: 50%;
       border: 3px solid #0b0f19;
       display: block;
@@ -91,20 +91,19 @@
       object-position: center 15%;
     }
     .title {
-      padding: 10px 40px 25px;
+      padding: 10px 35px 20px;
       text-align: left;
     }
     .title h2 {
       margin: 0;
-      font-size: 22px;
+      font-size: 21px;
       color: #00f0ff;
       font-weight: 600;
       letter-spacing: 0.5px;
     }
     .content {
-      padding: 0 40px 40px;
+      padding: 0 35px 35px;
       background-color: #0b0f19;
-      border-radius: 12px;
     }
     .content p {
       font-size: 15px;
@@ -113,7 +112,7 @@
       margin: 0 0 16px;
     }
     .greeting {
-      font-size: 17px !important;
+      font-size: 16px !important;
       color: #ffffff !important;
       font-weight: 600;
       padding-top: 5px;
@@ -122,78 +121,139 @@
       background-color: #0f172a;
       border-left: 4px solid #00f0ff;
       border-radius: 6px;
-      padding: 24px;
-      margin: 30px 0;
+      padding: 20px;
+      margin: 25px 0;
       border-right: 1px solid #1e293b;
       border-top: 1px solid #1e293b;
       border-bottom: 1px solid #1e293b;
     }
     .highlight-box h4 {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       color: #f8fafc;
       font-size: 15px;
       font-weight: 600;
     }
     .highlight-box p {
       margin: 0;
-      font-size: 14px;
+      font-size: 13.5px;
       color: #94a3b8;
-      line-height: 1.6;
+      line-height: 1.5;
     }
-    .message-content {
-      margin-top: 16px !important;
-      padding-top: 16px;
-      border-top: 1px dashed #334155;
+    .detail-item {
+      padding: 5px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+    .detail-label {
+      color: #94a3b8;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .message-bubble {
+      margin-top: 10px;
+      padding: 14px 16px;
+      background-color: #080c14;
+      border-radius: 6px;
+      border: 1px solid #1e293b;
+      color: #f1f5f9;
       font-style: italic;
-      color: #e2e8f0 !important;
-      font-size: 15px !important;
+      font-size: 14px;
+      line-height: 1.6;
+      word-break: break-word;
     }
     .action-container {
       text-align: center;
-      margin: 45px 0 15px;
+      margin: 35px 0 10px;
     }
     .button {
       background-color: #0A66C2;
       color: #ffffff !important;
       text-decoration: none;
-      padding: 14px 36px;
+      padding: 14px 32px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 15px;
       display: inline-block;
       letter-spacing: 0.5px;
-      transition: all 0.3s ease;
     }
     .footer {
-      padding: 35px 40px;
+      padding: 30px 25px;
       background-color: #070a12;
       border-top: 1px solid #1e293b;
       text-align: center;
     }
-    .social-links {
-      padding-bottom: 25px;
+    .social-table {
+      margin: 0 auto;
+      width: auto !important;
     }
-    .social-links a {
+    .social-link {
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
-      margin: 0 16px;
       letter-spacing: 0.5px;
-    }
-    .social-divider {
-      color: #334155;
+      white-space: nowrap;
+      display: inline-block;
+      padding: 4px 8px;
     }
     .disclaimer {
-      margin-top: 10px;
-      font-size: 12px;
+      margin-top: 18px;
+      font-size: 11.5px;
       color: #64748b;
       line-height: 1.6;
+      padding: 0 10px;
+    }
+
+    /* Mobile Responsiveness */
+    @media only screen and (max-width: 480px) {
+      .wrapper {
+        padding: 10px 0 30px !important;
+      }
+      .main {
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+      }
+      .header, .title, .content, .footer {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+      }
+      .header h1 {
+        font-size: 22px !important;
+      }
+      .header p {
+        font-size: 10px !important;
+        letter-spacing: 0.8px !important;
+      }
+      .profile-container {
+        width: 80px !important;
+      }
+      .profile-img {
+        width: 70px !important;
+        height: 70px !important;
+      }
+      .title h2 {
+        font-size: 18px !important;
+      }
+      .highlight-box {
+        padding: 16px !important;
+      }
+      .social-link {
+        font-size: 12.5px !important;
+        padding: 4px 6px !important;
+      }
+      .button {
+        display: block !important;
+        padding: 14px 20px !important;
+        text-align: center !important;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <table class="main">
+    <table class="main" align="center">
       <tr>
         <td>
           <div class="top-bar"></div>
@@ -207,10 +267,10 @@
                   <p style="color: #cbd5e1;">Full Stack & AI/ML Developer</p>
                   <p>Cloud & DevOps Practitioner</p>
                 </td>
-                <td class="profile-container" style="vertical-align: middle;">
-                  <!-- Larger profile photo with gradient ring & face positioning -->
+                <td class="profile-container" style="vertical-align: middle; text-align: right;">
+                  <!-- Profile photo with gradient ring & face positioning -->
                   <div class="profile-img-wrapper" style="display: inline-block; padding: 3px; background: linear-gradient(135deg, #00f0ff, #3b82f6); border-radius: 50%; box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);">
-                    <img src="https://raw.githubusercontent.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/main/src/assets/profile.jpg" alt="Debdatta Panda" class="profile-img" style="width: 96px; height: 96px; border-radius: 50%; border: 3px solid #0b0f19; display: block; object-fit: cover; object-position: center 15%;">
+                    <img src="https://raw.githubusercontent.com/MyselfDebdatta/MY-PORTFOLIO-DEBDATTA.DEV/main/src/assets/profile.jpg" alt="Debdatta Panda" class="profile-img" style="width: 85px; height: 85px; border-radius: 50%; border: 3px solid #0b0f19; display: block; object-fit: cover; object-position: center 15%;">
                   </div>
                 </td>
               </tr>
@@ -228,27 +288,29 @@
             <p>Greetings from Debdatta Panda.</p>
             <p>Thank you for taking the time to explore my portfolio. I have successfully received your inquiry and I truly appreciate your interest. I will review your message and get back to you shortly.</p>
             
-            <!-- Highlighted Box -->
+            <!-- Highlighted Box (Mobile-friendly stacked structure) -->
             <div class="highlight-box">
               <h4>
-                <span style="font-size: 18px; margin-right: 6px;">📄</span> Message Details
+                <span style="font-size: 17px; margin-right: 5px;">📄</span> Message Details
               </h4>
-              <p style="margin-bottom: 14px;">Below is a summary of the inquiry you submitted through my portfolio:</p>
+              <p style="margin-bottom: 12px;">Below is a summary of the inquiry you submitted through my portfolio:</p>
               
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px; border-top: 1px dashed #334155; padding-top: 14px;">
-                <tr>
-                  <td style="padding: 6px 0; color: #94a3b8; font-size: 14px; width: 85px; vertical-align: top;"><strong>• Name:</strong></td>
-                  <td style="padding: 6px 0; color: #f1f5f9; font-size: 14px; font-weight: 500;">{{name}}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 6px 0; color: #94a3b8; font-size: 14px; width: 85px; vertical-align: top;"><strong>• Email:</strong></td>
-                  <td style="padding: 6px 0; color: #00f0ff; font-size: 14px; font-weight: 500;"><a href="mailto:{{email}}" style="color: #00f0ff; text-decoration: none;">{{email}}</a></td>
-                </tr>
-                <tr>
-                  <td style="padding: 6px 0; color: #94a3b8; font-size: 14px; width: 85px; vertical-align: top;"><strong>• Message:</strong></td>
-                  <td style="padding: 6px 0; color: #e2e8f0; font-size: 14px; font-style: italic; line-height: 1.5;">"{{message}}"</td>
-                </tr>
-              </table>
+              <div style="border-top: 1px dashed #334155; padding-top: 12px;">
+                <div class="detail-item">
+                  <span class="detail-label">• Name:</span>
+                  <span style="color: #f1f5f9; font-weight: 500;">{{name}}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">• Email:</span>
+                  <a href="mailto:{{email}}" style="color: #00f0ff; text-decoration: none; font-weight: 500;">{{email}}</a>
+                </div>
+                <div class="detail-item" style="padding-top: 8px;">
+                  <span class="detail-label">• Message:</span>
+                  <div class="message-bubble">
+                    "{{message}}"
+                  </div>
+                </div>
+              </div>
             </div>
 
             <p>I am always excited to discuss innovative ideas, explore new opportunities, or just talk tech. Looking forward to our conversation!</p>
@@ -261,14 +323,22 @@
 
           <!-- Footer -->
           <div class="footer">
-            <div class="social-links">
-              <!-- Replaced LinkedIn with GitHub as requested -->
-              <a href="https://github.com/MyselfDebdatta" style="color: #ffffff;">GitHub</a> 
-              <span class="social-divider">|</span> 
-              <a href="https://wa.me/918637377080" style="color: #25D366;">WhatsApp</a> 
-              <span class="social-divider">|</span> 
-              <a href="https://www.instagram.com/itz__debdatta?igsh=MXRydjliNmdycDFrdg==" style="color: #E1306C;">Instagram</a>
-            </div>
+            <!-- Responsive centered social row -->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="social-table">
+              <tr>
+                <td align="center" style="padding: 0 4px;">
+                  <a href="https://github.com/MyselfDebdatta" class="social-link" style="color: #ffffff;">GitHub</a>
+                </td>
+                <td style="color: #334155; font-size: 14px; padding: 0 2px;">•</td>
+                <td align="center" style="padding: 0 4px;">
+                  <a href="https://wa.me/918637377080" class="social-link" style="color: #25D366;">WhatsApp</a>
+                </td>
+                <td style="color: #334155; font-size: 14px; padding: 0 2px;">•</td>
+                <td align="center" style="padding: 0 4px;">
+                  <a href="https://www.instagram.com/itz__debdatta?igsh=MXRydjliNmdycDFrdg==" class="social-link" style="color: #E1306C;">Instagram</a>
+                </td>
+              </tr>
+            </table>
             
             <p class="disclaimer">You are receiving this automated email because you submitted a contact form on Debdatta Panda's portfolio website. To contact me directly, reply to this email.</p>
           </div>
