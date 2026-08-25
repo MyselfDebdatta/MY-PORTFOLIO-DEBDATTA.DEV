@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Portfolio Message Received</title>
+  <style>
+    /* Reset and Base Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #030406;
+      color: #d1d5db;
+      -webkit-font-smoothing: antialiased;
+    }
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    td {
+      padding: 0;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #030406;
+      background-image: radial-gradient(circle at top, #0c1a2e 0%, #030406 100%);
+      padding: 40px 0 60px;
+    }
+    .main {
+      background-color: #0b0f19;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      border-spacing: 0;
+      color: #d1d5db;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+    .top-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #10b981, #00f0ff);
+      width: 100%;
+    }
+    .header {
+      padding: 35px 35px 20px;
+    }
+    .header-table {
+      width: 100%;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      font-weight: 800;
+    }
+    .header h1 span {
+      color: #00f0ff;
+    }
+    .header p {
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .content {
+      padding: 0 35px 35px;
+      background-color: #0b0f19;
+    }
+    .sender-card {
+      background-color: #0f172a;
+      border-left: 4px solid #00f0ff;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 20px 0 25px;
+      border-right: 1px solid #1e293b;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
+    }
+    .sender-card h3 {
+      margin: 0 0 16px;
+      color: #f8fafc;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .info-row {
+      padding: 6px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .info-label {
+      color: #94a3b8;
+      font-weight: 600;
+      display: inline-block;
+      min-width: 90px;
+    }
+    .info-value {
+      color: #f1f5f9;
+      font-weight: 500;
+    }
+    .message-card {
+      background-color: #080c14;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #1e293b;
+      margin-bottom: 30px;
+    }
+    .message-card h4 {
+      margin: 0 0 10px;
+      color: #00f0ff;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .message-body {
+      color: #f8fafc;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .action-container {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+    .reply-button {
+      background: linear-gradient(135deg, #00f0ff, #0077b5);
+      color: #000000 !important;
+      text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+    .footer {
+      padding: 25px 35px;
+      background-color: #070a12;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+    }
+    .footer p {
+      margin: 0;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Mobile Responsiveness */
+    @media only screen and (max-width: 480px) {
+      .wrapper {
+        padding: 10px 0 30px !important;
+      }
+      .main {
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+      }
+      .header, .content, .footer {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+      }
+      .header h1 {
+        font-size: 20px !important;
+      }
+      .sender-card, .message-card {
+        padding: 16px !important;
+      }
+      .info-label {
+        display: block !important;
+        margin-bottom: 2px !important;
+      }
+      .reply-button {
+        display: block !important;
+        padding: 14px 20px !important;
+        text-align: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <table class="main" align="center">
+      <tr>
+        <td>
+          <div class="top-bar"></div>
+          
+          <!-- Header -->
+          <div class="header">
+            <div class="badge">● New Portfolio Lead</div>
+            <h1>New Message from <span>{{name}}</span></h1>
+            <p>Someone just submitted the contact form on your portfolio website.</p>
+          </div>
+
+          <!-- Content Section -->
+          <div class="content">
+            
+            <!-- Sender Information Card -->
+            <div class="sender-card">
+              <h3>👤 Viewer Contact Information</h3>
+              
+              <div style="border-top: 1px dashed #334155; padding-top: 12px;">
+                <div class="info-row">
+                  <span class="info-label">• Full Name:</span>
+                  <span class="info-value" style="color: #ffffff; font-weight: 600;">{{name}}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">• Email:</span>
+                  <span class="info-value">
+                    <a href="mailto:{{email}}" style="color: #00f0ff; text-decoration: none; font-weight: 600;">{{email}}</a>
+                  </span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">• LinkedIn:</span>
+                  <span class="info-value" style="color: #93c5fd;">{{linkedin}}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">• GitHub:</span>
+                  <span class="info-value" style="color: #cbd5e1;">{{github}}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inquired Message Box -->
+            <div class="message-card">
+              <h4>💬 Submitted Message</h4>
+              <p class="message-body">"{{message}}"</p>
+            </div>
+
+            <!-- Quick Action Reply Button -->
+            <div class="action-container">
+              <a href="mailto:{{email}}?subject=Re:%20Inquiry%20from%20Debdatta%20Panda%20Portfolio" class="reply-button">
+                ⚡ Reply Directly to {{name}}
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Footer -->
+          <div class="footer">
+            <p>
+              Sent automatically from <strong>debdatta.dev</strong> via EmailJS integration.<br>
+              Reply-To header is pre-configured to: <span style="color: #94a3b8;">{{email}}</span>
+            </p>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
